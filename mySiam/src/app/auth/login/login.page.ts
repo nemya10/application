@@ -46,10 +46,10 @@ export class LoginPage implements OnInit {
   }// end login
 
   async facebookLogin() {
-    this.auth.signInWithFacebook();
+    this.facebookSignIn();
   }
   async googleLogin() {
-    this.auth.signInWithGooglePlus();
+    this.googleSignIn();
   }
   facebookSignIn() {
     this.auth.signInWithFacebook()

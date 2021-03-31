@@ -149,7 +149,7 @@
 
   <ng-template #template1 let-showEventDetail="showEventDetail" let-selectedDate="selectedDate"
     let-noEventsLabel="noEventsLabel">
-    
+
     <ion-list class="event-detail-container" has-bouncing="false" *ngIf="showEventDetail" overflow-scroll="false">
       <ion-item *ngFor="let event of selectedDate?.events" (click)="onEventSelected(event)">
         <span class="event-detail"> {{event.title}} </span>
