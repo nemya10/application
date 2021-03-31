@@ -1,7 +1,0 @@
-{
-  "name": "mySiam",
-  "integrations": {
-    "cordova": {}
-  },
-  "type": "angular"
-}
