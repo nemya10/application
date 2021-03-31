@@ -1,0 +1,184 @@
+
+<div *ngIf="currentStatus == '0'">
+  <ion-list>  
+      <ion-card>
+        <ion-item>
+          <ion-icon name="star" slot="start"></ion-icon>
+          <ion-label>Liste des compensations</ion-label>
+          <ion-button (click)="showHidelist1()" fill="outline" slot="end">Détail</ion-button>
+        </ion-item>
+        <ion-card-content>Cliquez pour voir les différentes compensations avec les règles qui s’appliquent.</ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-item>
+          <ion-icon name="star" slot="start"></ion-icon>
+          <ion-label>Reste à jeûner</ion-label>
+          <ion-button (click)="showHidelist2()" fill="outline" slot="end">Détail</ion-button>
+        </ion-item>
+        <ion-card-content>Cliquez pour voir les jours à jeuner.</ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-item>
+          <ion-icon name="star" slot="start"></ion-icon>
+          <ion-label>Jours recuperes</ion-label>
+          <ion-button (click)="showHidelist3()" fill="outline" slot="end">Détail</ion-button>
+        </ion-item>
+        <ion-card-content>Cliquez pour voir les jours recuperes.</ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-item>
+          <ion-icon name="star" slot="start"></ion-icon>
+          <ion-label>Reste à jeûner </ion-label>
+          <ion-button (click)="showHidelist4()" fill="outline" slot="end">Détail</ion-button>
+        </ion-item>
+        <ion-card-content>Cliquez pour connaître le nombre de jours qu’il vous reste à jeûner.</ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-item>
+          <ion-icon name="star" slot="start"></ion-icon>
+          <ion-label>Montant à verser</ion-label>
+          <ion-button (click)="showHidelist5()" fill="outline" slot="end">Détail</ion-button>
+        </ion-item>
+        <ion-card-content>Cliquez pour voir le montant à verser en détail.</ion-card-content>
+      </ion-card>
+  </ion-list> 
+  </div>
+
+  <div  *ngIf="currentStatus == '1'">
+    <ion-button (click)="close()" fill="outline" slot="end">Revenir</ion-button>
+    <ion-card>
+      <ion-item>
+        <ion-icon name="star" slot="start"></ion-icon>
+        <ion-label>Maladie longue durée / vieillesse </ion-label>
+      </ion-item>
+      <ion-card-content>Nourrir un pauvre pour chaque jour manqué (équivalent de 7 euros par jour)</ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-item>
+        <ion-icon name="star" slot="start"></ion-icon>
+        <ion-label>	Maladie courte durée / voyageur / grossesse et allaitement (pour les femmes qui ont peur pour leur santé)  </ion-label>
+      </ion-item>
+      <ion-card-content>Récupération des jours manqués sans compensation</ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-item>
+        <ion-icon name="star" slot="start"></ion-icon>
+        <ion-label>	Grossesse et allaitement (pour les femmes qui ont peur pour la santé du bébé).</ion-label>
+      </ion-item>
+      <ion-card-content>Nourrir un pauvre pour chaque jour manqué et rattraper ces jours.</ion-card-content>
+    </ion-card>
+  </div>
+  
+  <div *ngIf="currentStatus == '2' && !showEditEvent ">
+  <ion-list class="event-detail-container" has-bouncing="false"  overflow-scroll="false">
+    <ion-button (click)="close()" fill="outline" slot="end">Revenir</ion-button>
+    <ion-item *ngFor="let event of auth.eventSourceJ">
+        <ion-card (click)="showHideFormEdit(event)" >
+          <ion-item>
+            <ion-icon name="star" slot="start"></ion-icon>
+            <span class="event-detail"> {{event.title}} </span>
+          </ion-item>
+          <ion-card-content>
+            <ion-item>
+              <ion-label>Date</ion-label>
+              <span class="event-detail"> {{event.desc}} </span>
+              <span class="event-detail"> {{event.id}} </span>
+
+              <span class="event-detail"> {{event.startTime}} </span>
+              <ion-datetime displayFormat="MM/DD/YYYY " pickerFormat="MMM D:HH:mm" [(ngModel)]="event.startTime"
+            display-timezone="utc" disabled></ion-datetime>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
+      </ion-item>
+</ion-list>
+</div>
+
+<div *ngIf="currentStatus=='3' && !showEditEvent">
+  <ion-button (click)="close()" fill="outline" slot="end">Revenir</ion-button>
+  <ion-list class="event-detail-container" has-bouncing="false"  overflow-scroll="false">
+    <ion-item *ngFor="let event of auth.eventSourceR" >
+      <ion-card (click)="showHideFormEdit(event)">
+        <ion-item>
+          <ion-icon name="star" slot="start"></ion-icon>
+          <span class="event-detail"> {{event.title}} </span>
+        </ion-item>
+        <ion-card-content>
+          <ion-item>
+            <ion-label>Date</ion-label>
+            <span class="event-detail"> {{event.startTime}} </span>
+          </ion-item>        
+        </ion-card-content>
+      </ion-card>
+    </ion-item>  
+</ion-list>
+</div>
+<div *ngIf="showEditEvent" class="ion-padding">
+  <ion-card > 
+    <ion-card-content > 
+      <ion-item>
+        <ion-label>Jour à</ion-label>
+        <ion-select [(ngModel)]="event.title">
+        <ion-select-option value="Jour récupéré">Jour récupéré</ion-select-option>
+        <ion-select-option value="Jour non jeûné">Jour non jeûné</ion-select-option>
+           </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked"></ion-label>
+        <ion-input tpye="text" [(ngModel)]="event.title"></ion-input>
+      </ion-item>
+    <ion-item [disabled]="event.title != 'jour non jeûné'">
+       <ion-label>Motif</ion-label>
+          <ion-select [(ngModel)]="event.desc" ok-text="Save" cancel-text="Cancel">
+            <ion-select-option value="Maladie (courte durée)">Maladie (courte durée)</ion-select-option>
+            <ion-select-option value="Maladie (longue durée donc irrattrapable)">Maladie (Longue durée donc irrattrapable)</ion-select-option>
+            <ion-select-option value="Grossesse">Grossesse</ion-select-option>
+            <ion-select-option value="Allaitement">Allaitement</ion-select-option>
+            <ion-select-option value="période de menstrue">Période de menstrue</ion-select-option>
+            <ion-select-option value="Voyage">Voyage</ion-select-option>
+          </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked"></ion-label>
+      <ion-input tpye="text" [(ngModel)]="event.desc"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label>Date</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY " pickerFormat="MMM D:HH:mm" [(ngModel)]="event.startTime" display-timezone="utc" disabled></ion-datetime>
+    </ion-item>
+    </ion-card-content>
+  </ion-card>
+<ion-button  *ngIf="showEditEvent" icon-left size="medium" expand="full" shape="round" color="dark" (click)="editEvent(event)" tappable>
+    <ion-icon name="log-in"></ion-icon>
+    Modifier 
+</ion-button>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed" >
+      <ion-fab-button (click)="showHideFormEditclose()">
+        <ion-icon *ngIf="showEditEvent" name="close"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+</div>
+
+
+<div *ngIf="currentStatus == '4'">
+  <ion-button (click)="close()" fill="outline" slot="end">Revenir</ion-button>
+  <ion-list>   
+    <ion-item>  
+      <ion-label>Reste à jeûner </ion-label>
+      <ion-label >{{this.numberNonJeune}} Jours.</ion-label>
+      <ion-icon name="star"></ion-icon> 
+    </ion-item> 
+  </ion-list> 
+</div>
+
+<div *ngIf="currentStatus == '5'">
+  <ion-button (click)="close()" fill="outline" slot="end">Revenir</ion-button>
+  <ion-list>   
+    <ion-item>  
+      <ion-label>Montant à verser </ion-label>
+      <ion-label >{{this.numberNonJeuneNourrir}} Euros</ion-label>
+      <ion-icon name="star"></ion-icon> 
+    </ion-item> 
+  </ion-list> 
+</div>

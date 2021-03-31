@@ -1,0 +1,83 @@
+
+
+  <ion-content padding class="animated fadeIn login auth-page">
+    <ion-card>
+      <ion-card-header>
+    <ion-card-title aria-live="style" style="text-align: center;" >MySiam</ion-card-title>
+  </ion-card-header>
+      
+
+     <!--  <ion-card-content>
+        <ion-img style="width: 50px; height: 50px;text-align:center;"  src="./assets/logo.png"></ion-img>
+        <h1>hello to MySiam </h1>
+      </ion-card-content> -->
+  </ion-card>
+    <div class="theme-bg"></div>
+    <div class="auth-content"></div>
+<!--       <ion-list>
+ -->      <!-- <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="text" [(ngModel)]="email"></ion-input>
+      </ion-item> -->
+      <ion-item no-padding class="animated fadeInUp">
+        <ion-label position="floating">
+          <ion-icon name="mail" item-start></ion-icon>
+          Email
+        </ion-label>
+        <ion-input color="secondary" type="email" [(ngModel)]="email"></ion-input>
+      </ion-item>
+
+      <ion-item no-padding class="animated fadeInUp">
+        <ion-label position="floating">
+          <ion-icon name="key" item-start></ion-icon>
+          Mot de passe
+        </ion-label>
+        <ion-input color="secondary" type="password" [(ngModel)]="password"></ion-input>
+      </ion-item>
+  <div style="padding: 20px;text-align:center;">
+    <p text-right tappable (click)="forgot()" class="paz">
+      <ion-text color="light">
+        <strong>Mot de passe oublié ?</strong>
+      </ion-text>
+    </p>
+<div>
+  <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="login()" tappable>
+    <ion-icon name="log-in"></ion-icon>
+
+      Connection
+  </ion-button>
+
+  <p text-center>
+    <ion-text color="light">
+      Ou se connecter avec:
+    </ion-text>
+  </p>
+
+  <ion-grid class="btn-group">
+    <ion-row>
+      <ion-col size="6">
+        <ion-button  (click)="facebookLogin()" shape="round" expand="full" color="secondary">
+          <ion-icon slot="icon-only" name="logo-facebook"></ion-icon>
+        </ion-button>
+      </ion-col>
+      
+      <ion-col size="6">
+        <ion-button (click)="googleLogin()" shape="round" expand="full" color="secondary">
+          <ion-icon slot="icon-only" name="logo-google"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</div>
+
+
+
+  <br>
+
+  <p>Vous n’avez pas de compte ? <a style="color: #95babb;" (click)="register()">Inscrivez-vous</a></p>
+  </div>
+</ion-content>
+
+
+

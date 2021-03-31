@@ -1,0 +1,33 @@
+<ion-header >
+  
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center" >MySiam
+    <ion-button  (click)="logout()" shape="round"  color="secondary">
+      <ion-icon name="log-out"></ion-icon>
+    </ion-button>
+  </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="compensation">
+      <ion-icon name="home-outline" ></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="calendrier">
+      <ion-icon name="calendar-outline"></ion-icon>
+      <ion-label>Calendrier</ion-label>
+    </ion-tab-button>
+   
+    <ion-tab-button tab="profile">
+      <ion-icon name="person-circle-outline"></ion-icon>
+      <ion-label>profile</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
+
+</ion-content>

@@ -1,0 +1,8 @@
+{
+  "name": "mySiam",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "angular"
+}
