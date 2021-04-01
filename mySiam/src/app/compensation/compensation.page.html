@@ -19,6 +19,8 @@
         <ion-item>
           <ion-icon name="star" slot="start"></ion-icon>
           <ion-label>Reste à jeûner : {{numberNonJeune}} Jours.</ion-label>
+          <ion-label>Montant : {{numberNonJeuneNourrir}} euros.</ion-label>
+
           <ion-button (click)="showHidelist2()" fill="outline" slot="end">Détail</ion-button>
         </ion-item>
         <ion-card-content>Cliquez pour voir les jours à jeuner.</ion-card-content>
@@ -148,11 +150,11 @@
     </ion-item>
     </ion-card-content>
   </ion-card>
-  <ion-button  *ngIf="showEditEvent" icon-left size="medium" expand="full" shape="round" color="dark" (click)="editEventRecup(event)" tappable>
+  <ion-button  *ngIf="showEditEvent" icon-left size="medium" expand="full" shape="round" color="dark" (click)="editEventMotif(event)" tappable>
     <ion-icon name="log-in"></ion-icon>
     Modifier motif. 
 </ion-button>
-<ion-button  *ngIf="showEditEvent" icon-left size="medium" expand="full" shape="round" color="dark" (click)="editEventMotif(event)" tappable>
+<ion-button  *ngIf="showEditEvent" icon-left size="medium" expand="full" shape="round" color="dark" (click)="editEventRecup(event)" tappable>
     <ion-icon name="log-in"></ion-icon>
     Récuperer ce jour. 
 </ion-button>

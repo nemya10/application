@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,7 +13,7 @@ name: string = ""
 email: string = ""
 val = "";
 
-  constructor(private afAuth: AngularFireAuth,   private router: Router) { 
+  constructor(private afAuth: AngularFireAuth, private auth: AuthService,  private router: Router) { 
     this.val = "profile";
     this.afAuth.authState.subscribe(data => {
       console.log(data.uid);
@@ -20,6 +21,10 @@ val = "";
       this.email=data.email;
     }
     )
+
+console.log(this.auth.getUser());
+    
+    // this.name=this.auth.getUser().name;
   }
 
   ngOnInit() {
