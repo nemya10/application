@@ -187,7 +187,7 @@ export class AuthService {
           console.log('boolean: ' + action.payload.exportVal().title == 'Jour récupéré');
           console.log('direct: ' + action.payload.exportVal().startTime);
           console.log('dat new: ' + new Date(action.payload.exportVal().startTime));
-          if (action.payload.exportVal().title == 'jour non jeûné') {
+          if (action.payload.exportVal().title == 'Jour non jeûné') {
             if (action.payload.exportVal().desc == 'Maladie (courte durée)') {
               this.numberNonJeuneNourrir++;
             }
@@ -201,7 +201,7 @@ export class AuthService {
               this.numberNonJeuneNourrir++;
               this.numberNonJeune++;
             }
-            else if (action.payload.exportVal().desc == 'période de menstrue') {
+            else if (action.payload.exportVal().desc == 'Période de menstrue') {
               this.numberNonJeune++;
             }
             else if (action.payload.exportVal().desc == 'Voyage') {
