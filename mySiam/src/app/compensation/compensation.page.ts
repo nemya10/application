@@ -38,6 +38,7 @@ export class CompensationPage implements OnInit {
   ngOnInit() {  
     this.loadEvent();
 
+
   }
   ionViewWillEnter(){
     this.loadEvent();
@@ -163,6 +164,7 @@ export class CompensationPage implements OnInit {
       subHeader: "Montant : " + this.numberNonJeuneNourrir*7 + " Euros.",
       buttons: ['OK']
     });
+    
     alert.present();
   }
   close() {

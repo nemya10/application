@@ -85,6 +85,7 @@ export class AuthService {
     this.afDB.list('Events/' + this.useriud).update(eventS.id, {
       title: eventS.title,
       desc: eventS.desc,
+      
 
     });
   }
