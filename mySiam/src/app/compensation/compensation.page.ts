@@ -42,12 +42,11 @@ export class CompensationPage implements OnInit {
   }
   ionViewWillEnter(){
     this.loadEvent();
-  }
+    this.currentStatus ='0'; 
+   }
 
   async loadEvent() {
-    this.numberNonJeune=0;
-  this.numberRecupere=0;
-  this.numberNonJeuneNourrir=0;
+   
     this.afAuth.authState.subscribe(data => {
       this.useriud = data.uid;
       if(!this.useriud)
@@ -58,7 +57,9 @@ export class CompensationPage implements OnInit {
         this.afDB.list('Events/' + data.uid).snapshotChanges(['child_added']).subscribe(actions => {
         this.eventSourceJ = [];
         this.eventSourceR = [];
-        
+        this.numberNonJeune=0;
+        this.numberRecupere=0;
+        this.numberNonJeuneNourrir=0;
         actions.forEach(action => {
           
           if (action.payload.exportVal().title == 'Jour non jeûné') {
@@ -107,24 +108,31 @@ export class CompensationPage implements OnInit {
           }
 
         });
+        this.numberNonJeuneNourrir =this.numberNonJeuneNourrir*7;
       });
     })
 
  }
   editEventRecup(eventS) {
-    this.auth.editEventRecp(eventS);
+    this.afDB.list('Events/' + this.useriud).update(eventS.id, {
+      title: 'Jour récupéré',
+      desc: '',
+    });
     this.showHideFormEditclose();
-    this.loadEvent();
+    this.ngOnInit();
   }
   editEventMotif(eventS) {
-    this.auth.editEventMotif(eventS);
-    this.showHideFormEditclose();
-    this.loadEvent();
+    this.afDB.list('Events/' + this.useriud).update(eventS.id, {
+      title: eventS.title,
+      desc: eventS.desc,
+    });   
+     this.showHideFormEditclose();
+    this.ngOnInit();
 
   }
   supprimerEventR(eventS) {
     this.afDB.list('Events/' + this.useriud).remove(eventS.id);
-    this.loadEvent();
+    this.ngOnInit();
 
   }
   supprimerEventJ(eventS) {
@@ -158,13 +166,14 @@ export class CompensationPage implements OnInit {
   }
 
   async showHidelist5() {
-    this.numberNonJeuneNourrir =  this.numberNonJeuneNourrir*7;
+    console.log('whyyyyyyyy' + this.numberNonJeuneNourrir);
+    
     const alert = await this.alertCtrl.create({
       header: 'Montant à verser',
-      subHeader: "Montant : " + this.numberNonJeuneNourrir*7 + " Euros.",
+      subHeader: "Montant : " + this.numberNonJeuneNourrir * 7 + " Euros.",
       buttons: ['OK']
     });
-    
+
     alert.present();
   }
   close() {

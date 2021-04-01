@@ -45,7 +45,15 @@ export class AuthService {
     )
   }// end of constructor
 
-
+getUser(){
+  console.log(this.afDB.object(`users/${this.useriud}`).snapshotChanges());
+  
+  return this.afDB.object(`users/${this.useriud}`).snapshotChanges();
+       
+  
+    
+ 
+}
   async login(email, pass) {
     const loading = await this.loadingCtrl.create({
       message: 'En cours....',
@@ -89,7 +97,7 @@ export class AuthService {
 
     });
   }
-  
+
 
   editEventRecp(eventS) {
     this.afDB.list('Events/' + this.useriud).update(eventS.id, {
