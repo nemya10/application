@@ -74,7 +74,7 @@ export class LoginPage implements OnInit {
       if (result.additionalUserInfo) {
         // to get all the sign in provider's information
         console.log(result.additionalUserInfo.message);
-        this.router.navigate(['/home']);
+        this.router.navigate(['/home/compensation']);
 
       }
       // This gives you a Facebook Access Token. You can use it to access the Facebook API.

@@ -81,16 +81,26 @@ export class AuthService {
   getCurrentUser() {
     return this.afAuth.currentUser;
   }
-  editEvent(eventS) {
-    console.log('id edit ' + eventS.id);
-    console.log('title edit ' + eventS.title);
-    console.log('desc edit ' + eventS.desc);
+  
+  editEventMotif(eventS) {
 
     this.afDB.list('Events/' + this.useriud).update(eventS.id, {
       title: eventS.title,
       desc: eventS.desc,
 
     });
+  }
+
+  editEventRecp(eventS) {
+    this.afDB.list('Events/' + this.useriud).update(eventS.id, {
+      title: 'Jour récupéré',
+      desc: '',
+    });
+  }
+  supprimerEvent(eventS) {
+
+
+    this.afDB.list('Events/' + this.useriud).remove(eventS.id);
   }
   async toast(message, status) {
     const toast = await this.toastr.create({
@@ -179,15 +189,13 @@ export class AuthService {
     this.afAuth.authState.subscribe(data => {
       this.useriud = data.uid;
       console.log('Events/' + this.useriud);
-      this.afDB.list('Events/' + data.uid).snapshotChanges(['child_added']).subscribe(actions => {
+        this.afDB.list('Events/' + data.uid).snapshotChanges(['child_added']).subscribe(actions => {
         this.eventSourceJ = [];
         this.eventSourceR = [];
+        
         actions.forEach(action => {
-          console.log('action:' + action.payload.exportVal().title);
-          console.log('boolean: ' + action.payload.exportVal().title == 'Jour récupéré');
-          console.log('direct: ' + action.payload.exportVal().startTime);
-          console.log('dat new: ' + new Date(action.payload.exportVal().startTime));
-          if (action.payload.exportVal().title == 'jour non jeûné') {
+          
+          if (action.payload.exportVal().title == 'Jour non jeûné') {
             if (action.payload.exportVal().desc == 'Maladie (courte durée)') {
               this.numberNonJeuneNourrir++;
             }
@@ -201,7 +209,7 @@ export class AuthService {
               this.numberNonJeuneNourrir++;
               this.numberNonJeune++;
             }
-            else if (action.payload.exportVal().desc == 'période de menstrue') {
+            else if (action.payload.exportVal().desc == 'Période de menstrue') {
               this.numberNonJeune++;
             }
             else if (action.payload.exportVal().desc == 'Voyage') {
@@ -209,9 +217,7 @@ export class AuthService {
             }
             //  console.log('numberNonnnnnnn: '+  this.numberNonJeune);
             //  console.log('numberNonNourrrrrrrr: '+  this.numberNonJeuneNourrir);
-            console.log('iddddddddddddd: ' + action.key);
-
-            this.eventSourceJ.push({
+             this.eventSourceJ.push({
               id: action.key,
               title: action.payload.exportVal().title,
               startTime: action.payload.exportVal().startTime,
@@ -221,7 +227,6 @@ export class AuthService {
               eventColor: 'red'
             });
           } else {
-            console.log('idddddddddddddR: ' + action.key);
             this.numberRecupere++;
             this.eventSourceR.push({
               id: action.key,
@@ -236,15 +241,14 @@ export class AuthService {
           }
 
         });
-        console.log('eventSourceR: ' + this.eventSourceR.keys);
-        console.log('eventSourceJ: ' + this.eventSourceJ.keys);
-
-        console.log('numberNonnnnnnn: ' + this.numberNonJeune);
-        console.log('numberNonNourrrrrrrr: ' + this.numberNonJeuneNourrir * 7);
-        console.log('numberRecup: ' + this.numberRecupere);
+        setTimeout((() => {console.log("fff")}),500);
+        console.log('1: ' + this.numberNonJeune);
+        console.log('2: ' + this.numberNonJeuneNourrir * 7);
+        console.log('3: ' + this.numberRecupere);
       });
     })
-    //this.numberNonJeuneNourrir = this.numberNonJeuneNourrir*7;
-    //console.log('numberNonNourrrrrrrrfiin: '+  this.numberNonJeuneNourrir);
+    setTimeout((() => {console.log("fuckkkkk" +this.numberNonJeune)}),2000);
+    return this.numberNonJeune;
+
  }
 }

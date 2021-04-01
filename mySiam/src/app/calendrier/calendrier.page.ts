@@ -4,6 +4,7 @@ import { CalendarComponent } from 'ionic2-calendar';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-calendrier',
@@ -53,14 +54,18 @@ event = {
   public afDB: AngularFireDatabase,
   private afAuth: AngularFireAuth,
   private auth: AuthService,
-  private loadingCtrl: LoadingController,
+  private loadingCtrl: LoadingController
+  ,   private router: Router
   ) { 
-    this.loadEvent();
-
   }
   ngOnInit() {
+    this.loadEvent();
     this.resetEvent();
   }
+  ionViewWillEnter(){
+    this.loadEvent();
+  }
+
   resetEvent() {
     this.event = {
       id:'',
@@ -74,59 +79,25 @@ event = {
   }
   showHideForm() {
     this.showAddEvent = !this.showAddEvent;
+
   }
-  showHideFormEdit() {
-    this.showEditEvent = !this.showEditEvent;
-  }
-  
-  // Create the right event format and reload source
-  /* addEvent() {
-    let eventCopy = {
-      title: this.event.title,
-      startTime:  new Date(this.event.startTime),
-      endTime: new Date(this.event.endTime),
-      allDay: this.event.allDay,
-      desc: this.event.desc
-    }
  
-    if (eventCopy.allDay) {
-      let start = eventCopy.startTime;
-      let end = eventCopy.endTime;
-      eventCopy.startTime = new Date(Date.UTC(start.getUTCFullYear(), start.getUTCMonth(), start.getUTCDate()));
-      eventCopy.endTime = new Date(Date.UTC(end.getUTCFullYear(), end.getUTCMonth(), end.getUTCDate() + 1));
-    }
-    this.eventSource.push(eventCopy);
-    this.showHideForm();
-    this.toast('ok', 'success');
-
-    this.myCal.loadEvents();
-   
-    this.resetEvent();
-
-  } */
   addEvent() {
-    this.afDB.list('Events/'+ this.useriud).push({
-      title: this.event.title,
-      startTime:  this.event.startTime,
-      endTime: this.event.endTime,
-      allDay: this.event.allDay,
-      desc: this.event.desc,
-
-    });
-    this.showHideForm();
-    this.resetEvent();
-  }
-  editEvent(eventS) {
-    this.afDB.list('Events/'+ this.useriud).update(eventS.id,{
-      title: this.event.title,
-      startTime:  this.event.startTime,
-      endTime: this.event.endTime,
-      allDay: this.event.allDay,
-      desc: this.event.desc,
-
-    });
-    this.showHideFormEdit();
-    this.resetEvent();
+    if (this.event.desc) {
+      this.afDB.list('Events/'+ this.useriud).push({
+        title: 'Jour non jeûné',
+        startTime:  this.event.startTime,
+        endTime: this.event.endTime,
+        allDay: this.event.allDay,
+        desc: this.event.desc,
+  
+      });
+      this.showHideForm();
+      this.resetEvent();
+        } else {
+      this.toast('Le champ motif est vide', 'danger');
+    }
+    
   }
   async loadEvent() {
     const loading = await this.loadingCtrl.create({
@@ -136,9 +107,9 @@ event = {
       duration: 2000
     });
     loading.present();
-    this.numberNonJeune=0;
-    this.numberRecupere=0;
-    this.numberNonJeuneNourrir=0;
+    // this.numberNonJeune=0;
+    // this.numberRecupere=0;
+    // this.numberNonJeuneNourrir=0;
     this.afAuth.authState.subscribe(data => {
 this.useriud=data.uid;
 console.log('Events/'+ this.useriud);
@@ -201,14 +172,15 @@ console.log('Events/'+ this.useriud);
         loading.dismiss();
 
       });
+//       this.auth.numberNonJeune=this.numberNonJeune;
+// this.auth.numberNonJeuneNourrir=this.numberNonJeuneNourrir*7;
+// this.auth.numberRecupere=this.numberRecupere;
+console.log('calendnumberNonnnnnnnCALEND: '+  this.numberNonJeune);
+      console.log('calendnumberNonNourrrrrrrrCALEND: '+  this.numberNonJeuneNourrir*7);
+      console.log('calendnumberRecup:CALEND '+  this.numberRecupere);
     });
   })
-this.auth.numberNonJeune=this.numberNonJeune;
-this.auth.numberNonJeuneNourrir=this.numberNonJeuneNourrir*7;
-this.auth.numberRecupere=this.numberRecupere;
-console.log('calendnumberNonnnnnnn: '+  this.auth.numberNonJeune);
-      console.log('calendnumberNonNourrrrrrrr: '+  this.auth.numberNonJeuneNourrir*7);
-      console.log('calendnumberRecup: '+  this.auth.numberRecupere);
+
 
   }
  // Change current month/week/day
@@ -271,4 +243,5 @@ async toast(message, status) {
   });
   toast.present();
 }// end of toast
+
 }

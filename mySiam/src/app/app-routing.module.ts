@@ -20,14 +20,13 @@ const routes: Routes = [
     path: 'forgetpass',
     loadChildren: () => import('./auth/forgetpass/forgetpass.module').then( m => m.ForgetpassPageModule)
   },
- 
-  {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
   {
     path: 'calendrier',
     loadChildren: () => import('./calendrier/calendrier.module').then( m => m.CalendrierPageModule)
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
     path: 'profile',
