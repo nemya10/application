@@ -20,9 +20,7 @@ export class AuthService {
   user: User;
   eventSourceR = [];
   eventSourceJ = [];
-  numberNonJeune: number = 0;
-  numberRecupere: number = 0;
-  numberNonJeuneNourrir: number = 0;
+
   useriud = ''
 
 
@@ -196,25 +194,7 @@ export class AuthService {
         actions.forEach(action => {
           
           if (action.payload.exportVal().title == 'Jour non jeûné') {
-            if (action.payload.exportVal().desc == 'Maladie (courte durée)') {
-              this.numberNonJeuneNourrir++;
-            }
-            else if (action.payload.exportVal().desc == 'Maladie (longue durée donc irrattrapable)') {
-              this.numberNonJeuneNourrir++;
-            }
-            else if (action.payload.exportVal().desc == 'Grossesse') {
-              this.numberNonJeune++;
-            }
-            else if (action.payload.exportVal().desc == 'Allaitement') {
-              this.numberNonJeuneNourrir++;
-              this.numberNonJeune++;
-            }
-            else if (action.payload.exportVal().desc == 'Période de menstrue') {
-              this.numberNonJeune++;
-            }
-            else if (action.payload.exportVal().desc == 'Voyage') {
-              this.numberNonJeune++;
-            }
+           
             //  console.log('numberNonnnnnnn: '+  this.numberNonJeune);
             //  console.log('numberNonNourrrrrrrr: '+  this.numberNonJeuneNourrir);
              this.eventSourceJ.push({
@@ -227,7 +207,6 @@ export class AuthService {
               eventColor: 'red'
             });
           } else {
-            this.numberRecupere++;
             this.eventSourceR.push({
               id: action.key,
               title: action.payload.exportVal().title,
@@ -242,13 +221,9 @@ export class AuthService {
 
         });
         setTimeout((() => {console.log("fff")}),500);
-        console.log('1: ' + this.numberNonJeune);
-        console.log('2: ' + this.numberNonJeuneNourrir * 7);
-        console.log('3: ' + this.numberRecupere);
+       
       });
     })
-    setTimeout((() => {console.log("fuckkkkk" +this.numberNonJeune)}),2000);
-    return this.numberNonJeune;
 
  }
 }

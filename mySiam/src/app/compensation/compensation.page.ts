@@ -152,10 +152,10 @@ export class CompensationPage implements OnInit {
   }
 
   async showHidelist5() {
-    this.numberNonJeuneNourrir =  this.auth.numberNonJeuneNourrir*7;
+    this.numberNonJeuneNourrir =  this.numberNonJeuneNourrir*7;
     const alert = await this.alertCtrl.create({
       header: 'Montant à verser',
-      subHeader: "Montant : " + this.auth.numberNonJeuneNourrir*7 + " Euros.",
+      subHeader: "Montant : " + this.numberNonJeuneNourrir*7 + " Euros.",
       buttons: ['OK']
     });
     alert.present();
