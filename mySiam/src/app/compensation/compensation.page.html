@@ -1,20 +1,37 @@
 
 
-<ion-header>
-	
-  </ion-header>
-  
-  <ion-content padding>
-<div *ngIf="currentStatus == '0'">
-  <ion-list>  
-      <ion-card>
+  <ion-header>
+    <ion-toolbar>
+      <ion-list>
         <ion-item>
-          <ion-icon name="star" slot="start"></ion-icon>
-          <ion-label>Liste des compensations</ion-label>
-          <ion-button (click)="showHidelist1()" fill="outline" slot="end">Détail</ion-button>
+          <ion-label>Jour non jouné</ion-label>
+          <ion-badge slot="end">2</ion-badge>
         </ion-item>
-        <ion-card-content>Cliquez pour voir les différentes compensations avec les règles qui s’appliquent.</ion-card-content>
-      </ion-card>
+        <ion-item>
+          <ion-label>Jours a recuperer</ion-label>
+          <ion-badge color="secondary" slot="end">1</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>Jours recuperer</ion-label>
+          <ion-badge color="tertiary" slot="end">3</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>Montant a verser</ion-label>
+          <ion-badge color="success" slot="end">80e</ion-badge>
+        </ion-item>
+
+
+
+
+
+      </ion-list>
+    </ion-toolbar>
+  </ion-header>
+
+
+<ion-content padding>
+<div *ngIf="currentStatus == '0'">
+  <ion-list>
       <ion-card>
         <ion-item>
           <ion-icon name="star" slot="start"></ion-icon>
@@ -39,34 +56,9 @@
         </ion-item>
         <ion-card-content>Cliquez pour voir le montant à verser en détail.</ion-card-content>
       </ion-card>
-  </ion-list> 
+  </ion-list>
   </div>
 
-  <div  *ngIf="currentStatus == '1'">
-    <ion-button (click)="close()" fill="outline" slot="end">Revenir</ion-button>
-    <ion-card>
-      <ion-item>
-        <ion-icon name="star" slot="start"></ion-icon>
-        <ion-label>Maladie longue durée / vieillesse </ion-label>
-      </ion-item>
-      <ion-card-content>Nourrir un pauvre pour chaque jour manqué (équivalent de 7 euros par jour)</ion-card-content>
-    </ion-card>
-    <ion-card>
-      <ion-item>
-        <ion-icon name="star" slot="start"></ion-icon>
-        <ion-label>	Maladie courte durée / voyageur / grossesse et allaitement (pour les femmes qui ont peur pour leur santé)  </ion-label>
-      </ion-item>
-      <ion-card-content>Récupération des jours manqués sans compensation</ion-card-content>
-    </ion-card>
-    <ion-card>
-      <ion-item>
-        <ion-icon name="star" slot="start"></ion-icon>
-        <ion-label>	Grossesse et allaitement (pour les femmes qui ont peur pour la santé du bébé).</ion-label>
-      </ion-item>
-      <ion-card-content>Nourrir un pauvre pour chaque jour manqué et rattraper ces jours.</ion-card-content>
-    </ion-card>
-  </div>
-  
   <div *ngIf="(currentStatus == '2')  && !showEditEvent ">
   <ion-list class="event-detail-container" has-bouncing="false"  overflow-scroll="false">
     <ion-button (click)="close()" fill="outline" slot="end">Revenir</ion-button>
@@ -101,7 +93,7 @@
         <ion-item>
           <ion-icon name="star" slot="start"></ion-icon>
           <span class="event-detail"> {{event.title}} </span>
-          
+
         </ion-item>
         <ion-card-content>
           <ion-item>
@@ -116,19 +108,19 @@
 
         </ion-card-content>
       </ion-card>
-    </ion-item>  
+    </ion-item>
 </ion-list>
 </div>
 <div *ngIf="showEditEvent" class="ion-padding">
-  <ion-card > 
-    <ion-card-content > 
+  <ion-card >
+    <ion-card-content >
       <ion-item disabled>
         <ion-label>Jour à</ion-label>
         <ion-label>{{event.title}} </ion-label>
       </ion-item>
-     
+
     <ion-item >
-       <ion-label>Motif</ion-label> 
+       <ion-label>Motif</ion-label>
        <ion-label>{{event.desc}} </ion-label>
        <ion-item>
         <ion-select [(ngModel)]="event.desc" ok-text="Save" cancel-text="Cancel">
@@ -150,11 +142,11 @@
   </ion-card>
   <ion-button  *ngIf="showEditEvent" icon-left size="medium" expand="full" shape="round" color="dark" (click)="editEventRecup(event)" tappable>
     <ion-icon name="log-in"></ion-icon>
-    Modifier motif. 
+    Modifier motif.
 </ion-button>
 <ion-button  *ngIf="showEditEvent" icon-left size="medium" expand="full" shape="round" color="dark" (click)="editEventMotif(event)" tappable>
     <ion-icon name="log-in"></ion-icon>
-    Récuperer ce jour. 
+    Récuperer ce jour.
 </ion-button>
 <ion-button  *ngIf="showEditEvent" icon-left size="medium" expand="full" shape="round" color="dark" (click)="supprimerEventJ(event)" tappable>
   <ion-icon name="log-in"></ion-icon>
@@ -170,12 +162,12 @@
 
 <div *ngIf="currentStatus == '5'">
   <ion-button (click)="close()" fill="outline" slot="end">Revenir</ion-button>
-  <ion-list>   
-    <ion-item>  
+  <ion-list>
+    <ion-item>
       <ion-label>Montant à verser </ion-label>
       <ion-label >{{this.numberNonJeuneNourrir}} Euros</ion-label>
-      <ion-icon name="star"></ion-icon> 
-    </ion-item> 
-  </ion-list> 
+      <ion-icon name="star"></ion-icon>
+    </ion-item>
+  </ion-list>
 </div>
 

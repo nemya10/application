@@ -1,19 +1,42 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>  Profile 
+    <ion-title>  Liste des compensations :
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
   <ion-content padding>
-	  <ion-list>
-  
-		  <ion-item>
-			<ion-label >email : {{this.email}}</ion-label>
-      </ion-item>
-      
-    
-		
-		</ion-list>
-  
+    <div>
+      <ion-list>
+        <ion-card>
+          <ion-card-content>Ci-dessous la liste des compensations avec les règles qui s’appliquent.</ion-card-content>
+        </ion-card>
+      </ion-list>
+    </div>
+
+    <div>
+      <ion-card>
+        <ion-item>
+          <ion-icon name="information-circle-outline"></ion-icon>
+          <ion-label>Maladie longue durée / vieillesse </ion-label>
+        </ion-item>
+        <ion-card-content>Nourrir un pauvre pour chaque jour manqué (équivalent de 7 euros par jour)</ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-item>
+          <ion-icon name="information-circle-outline"></ion-icon>
+          <ion-label>	Maladie courte durée / voyageur <br>/ grossesse et allaitement (pour les <br> femmes qui ont peur pour leur santé)  </ion-label>
+        </ion-item>
+        <ion-card-content>Récupération des jours manqués sans compensation</ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-item>
+          <ion-icon name="information-circle-outline"></ion-icon>
+          <ion-label>	Grossesse et allaitement  (pour les <br> femmes qui ont peur pour la santé du bébé).</ion-label>
+        </ion-item>
+        <ion-card-content>Nourrir un pauvre pour chaque jour manqué et rattraper ces jours.</ion-card-content>
+      </ion-card>
+    </div>
+
+
   </ion-content>
