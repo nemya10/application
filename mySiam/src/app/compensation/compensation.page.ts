@@ -33,7 +33,8 @@ export class CompensationPage implements OnInit {
   constructor(private alertCtrl: AlertController,    private afAuth: AngularFireAuth,
     private auth: AuthService ,   private router: Router,private loadingCtrl: LoadingController,public afDB: AngularFireDatabase
     ) {
-   }
+   } 
+
   ngOnInit() {  
     this.loadEvent();
 
@@ -48,6 +49,10 @@ export class CompensationPage implements OnInit {
   this.numberNonJeuneNourrir=0;
     this.afAuth.authState.subscribe(data => {
       this.useriud = data.uid;
+      if(!this.useriud)
+      {
+        return
+      }
       console.log('Events/' + this.useriud);
         this.afDB.list('Events/' + data.uid).snapshotChanges(['child_added']).subscribe(actions => {
         this.eventSourceJ = [];
