@@ -19,7 +19,7 @@
           <ion-label>Jour non jeûné </ion-label>
         </ion-item>
         <ion-item>
-          
+
         <ion-label>Motif</ion-label>
         <ion-select [(ngModel)]="event.desc" ok-text="Save" cancel-text="Cancel">
           <ion-select-option value="Maladie (courte durée)">Maladie (courte durée)</ion-select-option>
@@ -63,12 +63,12 @@
           <ion-icon name="home-outline" ></ion-icon>
           <ion-label>Home</ion-label>
         </ion-tab-button>
-    
+
         <ion-tab-button (click)="toCalendrier()">
           <ion-icon name="calendar-outline"></ion-icon>
           <ion-label>Calendrier</ion-label>
         </ion-tab-button>
-       
+
         <ion-tab-button (click)="toProfile()">
           <ion-icon name="person-circle-outline"></ion-icon>
           <ion-label>profile</ion-label>
@@ -76,7 +76,7 @@
       </ion-tab-bar>
     </ion-tabs> -->
     <calendar id="myCal" [monthviewDisplayEventTemplate]="template" [monthviewEventDetailTemplate]="template1"
-      [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate"
+      locale = "fr-FR" [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate"
       (onEventSelected)="onEventSelected($event)" (onTitleChanged)="onViewTitleChanged($event)"
       (onTimeSelected)="onTimeSelected($event)" startHour="12" endHour="13" step="30" startingDayWeek="1"
       [format]="'YYYY-MM-DD'">
@@ -113,12 +113,12 @@
         <span class="event-detail"> {{event.title}} </span>
       </ion-item>
       <ion-item *ngIf="selectedDate?.events.length==0">
-        <div class="no-events-label">Rien</div>
+        <div class="no-events-label">Pas d'évènement</div>
       </ion-item>
     </ion-list>
     <ion-button *ngIf="selectedDate?.events.length==0" fill="outline" expand="block" (click)="showHideForm()">
       Ajouter
     </ion-button>
   </ng-template>
- 
+
 </ion-content>
