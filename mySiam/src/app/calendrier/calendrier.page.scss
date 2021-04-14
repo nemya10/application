@@ -1,9 +1,8 @@
-
 .indicator-container {
   padding-left: 0.5rem;
   padding-bottom: 0.4rem;
 }
- 
+
 .event-indicator {
   background: var(--ion-color-success);
   width: 5px;
@@ -11,17 +10,25 @@
   border-radius: 5px;
   display: table-cell;
 }
- 
+
 :host ::ng-deep {
   .monthview-primary-with-event {
     background-color: white !important;
   }
- 
+
   .monthview-selected {
     background-color: var(--ion-color-success) !important;
   }
+
+  td, th {
+      border: 0 !important;
+    }
+
+        ion-content {
+            --background: linear-gradient(#F89D57, #F88178);
+        }
 }
- 
+
 .with-event {
   background-color: var(--ion-color-danger);
   border-radius: 10px;

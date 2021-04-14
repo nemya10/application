@@ -1,83 +1,264 @@
+<ion-content padding class="animated fadeIn login auth-page">
+
+  <ion-content>
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="UTF-8" />
+      <style>
+      .component-wrapper a,
+      .screen a {
+        text-decoration: none;
+        display: contents;
+      }
+
+      .full-width-a {
+        width: 100%;
+      }
+
+      .full-height-a {
+        height: 100%;
+      }
+
+      .screen textarea:focus,
+      .screen input:focus {
+        outline: none;
+      }
+
+      .screen *,
+      .component-wrapper * {
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .screen div {
+        -webkit-text-size-adjust: none;
+      }
+
+      .container-center-vertical,
+      .container-center-horizontal {
+        pointer-events: none;
+        display: flex;
+        flex-direction: row;
+        padding: 0;
+        margin: 0;
+      }
+
+      .container-center-vertical {
+        align-items: center;
+        height: 100%;
+      }
+
+      .container-center-horizontal {
+        justify-content: center;
+        width: 100%;
+      }
+
+      .container-center-vertical > *,
+      .container-center-horizontal > * {
+        pointer-events: auto;
+        flex-shrink: 0;
+      }
+
+      .component-wrapper,
+      .screen {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        word-break: break-all;
+        word-break: break-word;
+      }
+
+      .auto-animated div {
+        opacity: 0;
+        position: absolute;
+        --z-index: -1;
+      }
+
+      .auto-animated .container-center-vertical,
+      .auto-animated .container-center-horizontal {
+        opacity: 1;
+      }
+
+      .overlay {
+        position: absolute;
+        opacity: 0;
+        display: none;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+      }
+
+      .animate-appear {
+        opacity: 0;
+        display: block;
+        animation: reveal 0.3s ease-in-out 1 normal forwards;
+      }
+
+      .animate-disappear {
+        opacity: 1;
+        display: block;
+        animation: reveal 0.3s ease-in-out 1 reverse forwards;
+      }
+
+      .animate-nodelay {
+        animation-delay: 0s;
+      }
+
+      @keyframes reveal {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      .align-self-flex-start {
+        align-self: flex-start;
+      }
+      .align-self-flex-end {
+        align-self: flex-end;
+      }
+      .align-self-flex-center {
+        align-self: center;
+      }
+      .valign-text-middle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .valign-text-bottom {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+      input:focus {
+        outline: none;
+      }
+      .component-wrapper,
+      .component-wrapper * {
+        pointer-events: none;
+      }
+
+      .component-wrapper a *,
+      .component-wrapper a,
+      .component-wrapper input,
+      .component-wrapper video,
+      .component-wrapper iframe,
+      .listeners-active,
+      .listeners-active * {
+        pointer-events: auto;
+      }
+
+      .hidden,
+      .hidden * {
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      .smart-layers-pointers,
+      .smart-layers-pointers * {
+        pointer-events: auto;
+        visibility: visible;
+      }
+
+      .component-wrapper.not-ready,
+      .component-wrapper.not-ready * {
+        visibility: hidden !important;
+      }
+
+      .listeners-active-click,
+      .listeners-active-click * {
+        cursor: pointer;
+      }
+
+      @import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
+      * {
+        box-sizing: border-box;
+      }
+      .roboto-bold-bittersweet-18px {
+        color: var(--bittersweet);
+        font-family: "Roboto", Helvetica;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 700;
+      }
+      .roboto-bold-white-18px {
+        color: var(--white);
+        font-family: "Roboto", Helvetica;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 700;
+      }
+      .roboto-normal-chicago-14px {
+        color: var(--chicago);
+        font-family: "Roboto", Helvetica;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+      }
+      .roboto-normal-chicago-18px {
+        color: var(--chicago);
+        font-family: "Roboto", Helvetica;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+      }
+      .roboto-normal-white-18px {
+        color: var(--white);
+        font-family: "Roboto", Helvetica;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+      }
+      :root {
+        --atomic-tangerine: rgba(248, 147, 99, 0.5);
+        --bittersweet: rgba(248, 129, 120, 1);
+        --chicago: rgba(94, 94, 94, 1);
+        --white: rgba(255, 255, 255, 1);
+      }
+    </style>
+    </head>
+    <div class="container-center-horizontal">
+      <div class="login screen">
+        <img class="logomy-siam-1-C61RwL" src="assets/logo.png" />
+        <div class="adresse-e-mail-C61RwL valign-text-middle roboto-bold-white-18px">Adresse e-mail</div>
+        <ion-input class="rectangle-2-C61RwL"  type="email" [(ngModel)]="email"></ion-input>
+        <div class="mot-de-passe-C61RwL valign-text-middle roboto-bold-white-18px">Mot de passe</div>
+        <ion-input class="overlap-group-C61RwL" type="password" [(ngModel)]="password"></ion-input>
+
+        <div class="mot-de-passe-oubli-C61RwL valign-text-middle">
+          <p text-right tappable (click)="forgot()" class="paz">
+            <ion-text color="light">
+              <strong>Mot de passe oublié ?</strong>
+            </ion-text>
+          </p>
+
+        </div>
 
 
-  <ion-content padding class="animated fadeIn login auth-page">
-    <ion-card>
-      <ion-card-header>
-    <ion-card-title aria-live="style" style="text-align: center;" >MySiam</ion-card-title>
-  </ion-card-header>
-      
+        <div class="bouton-connexion-email-C61RwL">
+          <ion-button icon-left size="medium" expand="full" shape="round" color="light" (click)="login()" tappable>
+            Se connecter
+          </ion-button>
+        </div>
 
-     <!--  <ion-card-content>
-        <ion-img style="width: 50px; height: 50px;text-align:center;"  src="./assets/logo.png"></ion-img>
-        <h1>hello to MySiam </h1>
-      </ion-card-content> -->
-  </ion-card>
-    <div class="theme-bg"></div>
-    <div class="auth-content"></div>
-<!--       <ion-list>
- -->      <!-- <ion-item>
-        <ion-label position="floating">Email</ion-label>
-        <ion-input type="text" [(ngModel)]="email"></ion-input>
-      </ion-item> -->
-      <ion-item no-padding class="animated fadeInUp">
-        <ion-label position="floating">
-          <ion-icon name="mail" item-start></ion-icon>
-          Email
-        </ion-label>
-        <ion-input color="secondary" type="email" [(ngModel)]="email"></ion-input>
-      </ion-item>
+        <p style="color: #FFFFFF;">Vous n’avez pas de compte ? <a style="color: #FFFFFF;" (click)="register()">Inscrivez-vous</a></p>
 
-      <ion-item no-padding class="animated fadeInUp">
-        <ion-label position="floating">
-          <ion-icon name="key" item-start></ion-icon>
-          Mot de passe
-        </ion-label>
-        <ion-input color="secondary" type="password" [(ngModel)]="password"></ion-input>
-      </ion-item>
-  <div style="padding: 20px;text-align:center;">
-    <p text-right tappable (click)="forgot()" class="paz">
-      <ion-text color="light">
-        <strong>Mot de passe oublié ?</strong>
-      </ion-text>
-    </p>
-<div>
-  <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="login()" tappable>
-    <ion-icon name="log-in"></ion-icon>
+        <div class="je-me-connecte-avec-C61RwL valign-text-middle roboto-bold-white-18px">Je me connecte avec :</div>
+        <div class="flex-row-C61RwL">
 
-      Connection
-  </ion-button>
+          <p  tappable (click)="facebookLogin()" >
+            <img src="assets/logoFace.png"/>
+          </p>
 
-  <p text-center>
-    <ion-text color="light">
-      Ou se connecter avec:
-    </ion-text>
-  </p>
+          <p  tappable (click)="googleLogin()" >
+            <img class="logo-google-dXBp89" src="assets/logoGoogle.png" />
+          </p>
 
-  <ion-grid class="btn-group">
-    <ion-row>
-      <ion-col size="6">
-        <ion-button  (click)="facebookLogin()" shape="round" expand="full" color="secondary">
-          <ion-icon slot="icon-only" name="logo-facebook"></ion-icon>
-        </ion-button>
-      </ion-col>
-      
-      <ion-col size="6">
-        <ion-button (click)="googleLogin()" shape="round" expand="full" color="secondary">
-          <ion-icon slot="icon-only" name="logo-google"></ion-icon>
-        </ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
-</div>
-
-
-
-  <br>
-
-  <p>Vous n’avez pas de compte ? <a style="color: #95babb;" (click)="register()">Inscrivez-vous</a></p>
-  </div>
+        </div>
+      </div>
+    </div>
+    </html>
+  </ion-content>
 </ion-content>
-
-
-

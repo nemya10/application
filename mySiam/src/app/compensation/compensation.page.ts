@@ -33,20 +33,20 @@ export class CompensationPage implements OnInit {
   constructor(private alertCtrl: AlertController,    private afAuth: AngularFireAuth,
     private auth: AuthService ,   private router: Router,private loadingCtrl: LoadingController,public afDB: AngularFireDatabase
     ) {
-   } 
+   }
 
-  ngOnInit() {  
+  ngOnInit() {
     this.loadEvent();
 
 
   }
   ionViewWillEnter(){
     this.loadEvent();
-    this.currentStatus ='0'; 
+    this.currentStatus ='0';
    }
 
   async loadEvent() {
-   
+
     this.afAuth.authState.subscribe(data => {
       this.useriud = data.uid;
       if(!this.useriud)
@@ -61,7 +61,7 @@ export class CompensationPage implements OnInit {
         this.numberRecupere=0;
         this.numberNonJeuneNourrir=0;
         actions.forEach(action => {
-          
+
           if (action.payload.exportVal().title == 'Jour non jeûné') {
             if (action.payload.exportVal().desc == 'Maladie (courte durée)') {
               this.numberNonJeuneNourrir++;
@@ -125,7 +125,7 @@ export class CompensationPage implements OnInit {
     this.afDB.list('Events/' + this.useriud).update(eventS.id, {
       title: eventS.title,
       desc: eventS.desc,
-    });   
+    });
      this.showHideFormEditclose();
     this.ngOnInit();
 
@@ -142,10 +142,10 @@ export class CompensationPage implements OnInit {
 
 
   }
-  showHideFormEditclose() { 
+  showHideFormEditclose() {
     this.showEditEvent = !this.showEditEvent;
   }
-  showHideFormEdit(eventS) { 
+  showHideFormEdit(eventS) {
     this.showEditEvent = !this.showEditEvent;
     this.event.id = eventS.id;
     this.event.title = eventS.title;
@@ -153,7 +153,7 @@ export class CompensationPage implements OnInit {
     this.event.desc = eventS.desc;
   }
 
-  showHidelist1() { 
+  showHidelist1() {
     this.currentStatus = "1";
   }
 
@@ -167,10 +167,10 @@ export class CompensationPage implements OnInit {
 
   async showHidelist5() {
     console.log('whyyyyyyyy' + this.numberNonJeuneNourrir);
-    
+
     const alert = await this.alertCtrl.create({
       header: 'Montant à verser',
-      subHeader: "Montant : " + this.numberNonJeuneNourrir * 7 + " Euros.",
+      subHeader: "Montant : " + this.numberNonJeuneNourrir  + " Euros.",
       buttons: ['OK']
     });
 

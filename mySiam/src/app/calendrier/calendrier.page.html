@@ -1,10 +1,10 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar color="light">
     <ion-title>
       {{ viewTitle }}
     </ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="today()">Today</ion-button>
+      <ion-button (click)="today()">Aujourd'hui</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -22,9 +22,8 @@
 
         <ion-label>Motif</ion-label>
         <ion-select [(ngModel)]="event.desc" ok-text="Save" cancel-text="Cancel">
-          <ion-select-option value="Maladie (courte durée)">Maladie (courte durée)</ion-select-option>
-          <ion-select-option value="Maladie (longue durée donc irrattrapable)">Maladie (longue durée donc
-            irrattrapable)</ion-select-option>
+          <ion-select-option value="Maladie (courte durée)">Maladie <br>(courte durée)</ion-select-option>
+          <ion-select-option value="Maladie (longue durée donc irrattrapable)">Maladie <br>(longue durée donc irrattrapable)</ion-select-option>
           <ion-select-option value="Grossesse">Grossesse</ion-select-option>
           <ion-select-option value="Allaitement">Allaitement</ion-select-option>
           <ion-select-option value="Période de menstrue">période de menstrue</ion-select-option>
@@ -57,31 +56,33 @@
   </div>
 
   <div *ngIf="!showAddEvent" class="ion-padding">
-    <!-- <ion-tabs>
-      <ion-tab-bar slot="bottom">
-        <ion-tab-button (click)="toHome()">
-          <ion-icon name="home-outline" ></ion-icon>
-          <ion-label>Home</ion-label>
-        </ion-tab-button>
+    <ion-row ngClass="month-header">
 
-        <ion-tab-button (click)="toCalendrier()">
-          <ion-icon name="calendar-outline"></ion-icon>
-          <ion-label>Calendrier</ion-label>
-        </ion-tab-button>
+      <ion-col size="2" text-left>
+        <ion-button fill="clear" (click)="back()">
+          <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size="7" text-right>
+      </ion-col>
 
-        <ion-tab-button (click)="toProfile()">
-          <ion-icon name="person-circle-outline"></ion-icon>
-          <ion-label>profile</ion-label>
-        </ion-tab-button>
-      </ion-tab-bar>
-    </ion-tabs> -->
+      <!-- Move forward one screen of the slides -->
+      <ion-col size="2" text-right>
+        <ion-button fill="clear" (click)="next()">
+          <ion-icon name="arrow-forward" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+
     <calendar id="myCal" [monthviewDisplayEventTemplate]="template" [monthviewEventDetailTemplate]="template1"
       locale = "fr-FR" [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate"
       (onEventSelected)="onEventSelected($event)" (onTitleChanged)="onViewTitleChanged($event)"
-      (onTimeSelected)="onTimeSelected($event)" startHour="12" endHour="13" step="30" startingDayWeek="1"
+      (onTimeSelected)="onTimeSelected($event)" startHour="12" endHour="13" step="30" [startingDayMonth] = 1
       [format]="'YYYY-MM-DD'">
     </calendar>
   </div>
+
   <ng-template #template let-view="view" let-row="row" let-col="col">
     <div [class.with-event]="view.dates[row*7+col].events.length">
       {{view.dates[row*7+col].label}}
@@ -113,7 +114,7 @@
         <span class="event-detail"> {{event.title}} </span>
       </ion-item>
       <ion-item *ngIf="selectedDate?.events.length==0">
-        <div class="no-events-label">Pas d'évènement</div>
+        <div>Pas d'évènement</div>
       </ion-item>
     </ion-list>
     <ion-button *ngIf="selectedDate?.events.length==0" fill="outline" expand="block" (click)="showHideForm()">

@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class RegisterPage implements OnInit {
   name: string = ""
+  pname: string = ""
   email: string = ""
   password: string = ""
   cpassword: string = ""
@@ -42,7 +43,7 @@ export class RegisterPage implements OnInit {
         });
         toast.present();
       }// end of toast
- 
+
 checkPassword(){
 if(this.password == this.cpassword){
   this.passwordMatch = true ;
@@ -56,7 +57,7 @@ if(this.password == this.cpassword){
     }
 
 
-  
+
 
 
 
@@ -67,15 +68,15 @@ if(this.password == this.cpassword){
         this.presentAlert("Error","Passwords don't match")
         return console.error("Passwords don't match")
       }
-  
+
       try {
         const res = await this.afAuth.createUserWithEmailAndPassword(username + '@aymen.com', password)
         this.presentAlert("Success", "You are registered!")
-  
+
       } catch(error) {
         console.dir(error)
         this.presentAlert("error", error.message)
-  
+
       }
     } */
   /*   async presentAlert(title: string, content: string) {
@@ -84,7 +85,7 @@ if(this.password == this.cpassword){
         message: content,
         buttons: ['OK']
       })
-  
+
       await alert.present()
     } */
 
