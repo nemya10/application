@@ -1,5 +1,4 @@
 <ion-content padding class="animated fadeIn login auth-page">
-
   <ion-content>
     <!DOCTYPE html>
     <html>
@@ -246,16 +245,10 @@
         <p style="color: #FFFFFF;">Vous n’avez pas de compte ? <a style="color: #FFFFFF;" (click)="register()">Inscrivez-vous</a></p>
 
         <div class="je-me-connecte-avec-C61RwL valign-text-middle roboto-bold-white-18px">Je me connecte avec :</div>
+
         <div class="flex-row-C61RwL">
-
-          <p  tappable (click)="facebookLogin()" >
-            <img src="assets/logoFace.png"/>
-          </p>
-
-          <p  tappable (click)="googleLogin()" >
-            <img class="logo-google-dXBp89" src="assets/logoGoogle.png" />
-          </p>
-
+          <ion-img class="logo-facebook-dXBp89" src="assets/logoFace.png"  tappable (click)="facebookLogin()"></ion-img>
+          <ion-img class="logo-google-dXBp89" src="assets/logoGoogle.png" tappable (click)="googleLogin()"></ion-img>
         </div>
       </div>
     </div>

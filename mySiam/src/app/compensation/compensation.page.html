@@ -1,4 +1,3 @@
-
 <ion-content padding>
   <!DOCTYPE html>
   <html>
@@ -271,22 +270,158 @@
       </div>
       <div class="jours-rattrapage-C61RwL">
         <img class="ellipse-1-bloVV8" src="assets/eclipse.png" />
-        <div class="nombre-de-jours-rattrapage-bloVV8 roboto-normal-chicago-48px">0</div>
+        <div class="nombre-de-jours-rattrapage-bloVV8 roboto-normal-chicago-48px">{{numberNonJeune}}</div>
         <div class="label-jours-rattrapage-bloVV8 roboto-normal-chicago-18px">Jour à jeûner</div>
       </div>
       <div class="flex-row-mzXdH9">
         <div class="jours-rcup-NwNIwt">
           <div class="fondrcup-gqUHZF"></div>
-          <div class="nombre-de-jours-rcuprs-gqUHZF roboto-normal-chicago-48px">0</div>
+          <div class="nombre-de-jours-rcuprs-gqUHZF roboto-normal-chicago-48px">{{numberRecupere}}</div>
           <div class="jour-rcupr-gqUHZF roboto-normal-chicago-18px">Jour récupéré</div>
         </div>
         <div class="montant-verser-NwNIwt">
           <div class="fondmontant-hiVJnw"></div>
-          <div class="montant-verser-hiVJnw roboto-normal-chicago-48px">0€</div>
+          <div class="montant-verser-hiVJnw roboto-normal-chicago-48px">{{numberNonJeuneNourrir}}€</div>
           <div class="label-montant-hiVJnw roboto-normal-chicago-18px">Montant à verser</div>
         </div>
       </div>
     </div>
+  </div>
+
+  <ion-list>
+    <div class="item-content">
+      <ion-item color="primary">
+        <ion-icon name="open-outline" (click)="showHidelist2()" fill="outline"></ion-icon>
+        <ion-label> &nbsp;&nbsp;Reste à jeûner :</ion-label>
+        <ion-badge color="danger" slot="end">{{numberNonJeune}}</ion-badge>
+      </ion-item>
+      <ion-item color="secondary">
+        <ion-icon name="open-outline" (click)="showHidelist3()" fill="outline"></ion-icon>
+        <ion-label>&nbsp;&nbsp;Jours recuperes :</ion-label>
+        <ion-badge color="danger" slot="end">{{numberRecupere}}</ion-badge>
+      </ion-item>
+      <ion-item color="tertiary">
+        <ion-icon name="open-outline" (click)="showHidelist5()" fill="outline" ></ion-icon>
+        <ion-label>&nbsp;&nbsp;Montant à verser :</ion-label>
+        <ion-badge color="danger" slot="end">{{numberNonJeuneNourrir}}</ion-badge>
+      </ion-item>
+    </div>
+  </ion-list>
+
+  <div *ngIf="(currentStatus == '2')  && !showEditEvent ">
+    <ion-list class="event-detail-container" has-bouncing="false"  overflow-scroll="false">
+      <ion-item *ngIf="eventSourceJ.length != 0">
+
+        <ion-button (click)="close()" fill="outline" slot="end" >Revenir</ion-button>
+      </ion-item>
+
+      <ion-item *ngFor="let event of eventSourceJ">
+        <ion-card  >
+          <ion-item>
+            <ion-icon name="star" slot="start"></ion-icon>
+            <span class="event-detail"> {{event.title}}  </span>
+            <span class="event-detail"> ( {{event.desc}} ) </span>
+
+          </ion-item>
+          <ion-card-content>
+            <ion-item>
+              <ion-datetime displayFormat="DD/MM/YYYY " pickerFormat="MMM D:HH:mm" [(ngModel)]="event.startTime"
+                            display-timezone="utc" disabled></ion-datetime>
+
+              <ion-button (click)="showHideFormEdit(event)" fill="outline" slot="end">Modifier</ion-button>
+
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div *ngIf="currentStatus=='3' && !showEditEvent">
+    <ion-item *ngIf="eventSourceR.length != 0">
+
+      <ion-button (click)="close()" fill="outline" slot="end" >Revenir</ion-button>
+    </ion-item>
+
+    <ion-list class="event-detail-container" has-bouncing="false"  overflow-scroll="false">
+      <ion-item *ngFor="let event of eventSourceR" >
+        <ion-card >
+          <ion-item>
+            <ion-icon name="star" slot="start"></ion-icon>
+            <span class="event-detail"> {{event.title}} </span>
+
+          </ion-item>
+          <ion-card-content>
+            <ion-item>
+              <ion-datetime displayFormat="DD/MM/YYYY " pickerFormat="MMM D:HH:mm" [(ngModel)]="event.startTime"
+                            display-timezone="utc" disabled></ion-datetime>
+              <ion-button  icon-left size="medium" expand="full" shape="round" color="dark" (click)="supprimerEventR(event)" tappable>
+                <ion-icon name="log-in"></ion-icon>
+                Supprimer.
+              </ion-button>
+            </ion-item>
+
+          </ion-card-content>
+        </ion-card>
+      </ion-item>
+    </ion-list>
+  </div>
+  <div *ngIf="showEditEvent" class="ion-padding">
+    <ion-card >
+      <ion-card-content >
+        <ion-item disabled>
+          <ion-label>Jour à</ion-label>
+          <ion-label>{{event.title}} </ion-label>
+        </ion-item>
+
+        <ion-item >
+          <ion-label>Motif</ion-label>
+          <ion-label>{{event.desc}} </ion-label>
+          <ion-item>
+            <ion-select [(ngModel)]="event.desc" ok-text="Save" cancel-text="Cancel">
+              <ion-select-option value="Maladie (courte durée)">Maladie (courte durée)</ion-select-option>
+              <ion-select-option value="Maladie (longue durée donc irrattrapable)">Maladie (longue durée donc
+                irrattrapable)</ion-select-option>
+              <ion-select-option value="Grossesse">Grossesse</ion-select-option>
+              <ion-select-option value="Allaitement">Allaitement</ion-select-option>
+              <ion-select-option value="période de menstrue">période de menstrue</ion-select-option>
+              <ion-select-option value="Voyage">Voyage</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-item>
+        <ion-item>
+          <ion-label>Date</ion-label>
+          <ion-datetime displayFormat="DD/MM/YYYY " pickerFormat="MMM D:HH:mm" [(ngModel)]="event.startTime" display-timezone="utc" disabled></ion-datetime>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+    <ion-button  *ngIf="showEditEvent" icon-left size="medium" expand="full" shape="round" color="dark" (click)="editEventMotif(event)" tappable>
+      <ion-icon name="log-in"></ion-icon>
+      Modifier motif.
+    </ion-button>
+    <ion-button  *ngIf="showEditEvent" icon-left size="medium" expand="full" shape="round" color="dark" (click)="editEventRecup(event)" tappable>
+      <ion-icon name="log-in"></ion-icon>
+      Récuperer ce jour.
+    </ion-button>
+    <ion-button  *ngIf="showEditEvent" icon-left size="medium" expand="full" shape="round" color="dark" (click)="supprimerEventJ(event)" tappable>
+      <ion-icon name="log-in"></ion-icon>
+      Supprimer ce jour.
+    </ion-button>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed" >
+      <ion-fab-button (click)="showHideFormEditclose()">
+        <ion-icon *ngIf="showEditEvent" name="close"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </div>
+  <div *ngIf="currentStatus == '5'">
+    <ion-button (click)="close()" fill="outline" slot="end">Revenir</ion-button>
+    <ion-list>
+      <ion-item>
+        <ion-label>Montant à verser </ion-label>
+        <ion-label >{{this.numberNonJeuneNourrir}} Euros</ion-label>
+        <ion-icon name="star"></ion-icon>
+      </ion-item>
+    </ion-list>
   </div>
   </html>
 </ion-content>
