@@ -5,35 +5,25 @@
   </ion-toolbar>
 </ion-header>
 -->
-<ion-content>
 
-<ion-tabs>
-  <ion-tab-bar slot="bottom">
+
+<ion-tabs >
+  <ion-tab-bar  slot="bottom" >
     <ion-tab-button tab="compensation">
-      <ion-icon name="home-outline" color="primary"></ion-icon>
-      <ion-label>Mon jeûne</ion-label>
-    </ion-tab-button>
+      <ion-icon name="home-sharp"></ion-icon>
 
-    <ion-tab-button tab="calendrier">
-      <ion-icon name="calendar-outline" color="primary"></ion-icon>
-      <ion-label>Calendrier</ion-label>
+      <ion-label class="my-label">Mon jeûne</ion-label>
     </ion-tab-button>
+    <div class="vl"></div>
 
-    <ion-tab-button tab="profile">
-      <ion-icon name="person-circle-outline" color="primary"></ion-icon>
-      <ion-label>Compensations</ion-label>
+    
+    <ion-tab-button tab="profile" layout="icon-top">
+      <ion-icon name="information-circle-sharp"></ion-icon>
+
+      <ion-label class="my-label">Compensations</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>
 
-</ion-content>
 
-<ion-footer>
-  <ion-toolbar color="light">
-    <ion-title class="ion-text-center" >
-      <ion-button  (click)="logout()" shape="round"  color="secondary">
-        <ion-icon name="log-out"></ion-icon>
-      </ion-button>
-    </ion-title>
-  </ion-toolbar>
-</ion-footer>
+

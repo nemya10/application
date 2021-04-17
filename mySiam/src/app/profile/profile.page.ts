@@ -34,9 +34,10 @@ console.log(this.auth.getUser());
     this.router.navigate(['../profile']);
   }//
   toCalendrier() {
-    this.val ='calendrier'
-    this.router.navigate(['../calendrier']);
-  }//
+  
+    this.router.navigate(['/home/calendrier']);
+    }
+ 
   toHome() {
     this.val ='compensation'
     this.router.navigate(['../compensation']);

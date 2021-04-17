@@ -260,14 +260,27 @@
         --white: rgba(255, 255, 255, 1);
         --white-2: rgba(255, 255, 255, 0.5);
       }
+      hr { 
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
+} 
     </style>
   </head>
+  <br>  <br>
   <div class="container-center-horizontal">
     <div class="homepage screen">
       <div class="flex-row-C61RwL">
         <img class="logomy-siam-1-dXBp89" src="assets/logo.png" />
-        <div class="mdicalendar-month-dXBp89"><img class="vector-U1fE8l" src="assets/petitCal.svg" /></div>
+        <br>  
+
+        <div class="mdicalendar-month-dXBp89"><img class="vector-U1fE8l" src="assets/petitCal.svg" (click)="toCalendrier()" /></div>
       </div>
+      <br>  
       <div class="jours-rattrapage-C61RwL">
         <img class="ellipse-1-bloVV8" src="assets/eclipse.png" />
         <div class="nombre-de-jours-rattrapage-bloVV8 roboto-normal-chicago-48px">{{numberNonJeune}}</div>

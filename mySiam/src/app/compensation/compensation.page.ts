@@ -156,7 +156,10 @@ export class CompensationPage implements OnInit {
   showHidelist1() {
     this.currentStatus = "1";
   }
-
+  toCalendrier() {
+  
+  this.router.navigate(['/home/calendrier']);
+  }
   showHidelist2() {
     this.currentStatus = "2";
   }
