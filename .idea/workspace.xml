@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c38bd04b-b586-46a0-b50a-399e650d06d2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/mySiam/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mySiam/config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mySiam/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/mySiam/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mySiam/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/mySiam/package.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1qRDXwQ2Lcn3dgtiMbhkSBnQgj4" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="AnalyzeApkAction.lastApkPath" value="$PROJECT_DIR$" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\E330\Documents\application\mySiam\node_modules" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="&lt;template&gt;" type="Applet" default="true" selected="false">
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration name="&lt;template&gt;" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" default="true" selected="false">
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c38bd04b-b586-46a0-b50a-399e650d06d2" name="Default Changelist" comment="" />
+      <created>1617033551865</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1617033551865</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1617037919992">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.132.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1617037919992" />
+    <state x="680" y="321" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1617655321827">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="680" y="321" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/210.1080.1366.768@0.0.1920.1040" timestamp="1617655321827" />
+    <state x="65" y="64" width="1236" height="600" key="AVDManager" timestamp="1617204733860">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="65" y="64" width="1236" height="600" key="AVDManager/0.0.1366.728@0.0.1366.728" timestamp="1617204733860" />
+    <state x="92" y="92" width="1736" height="856" key="AVDManager/1920.132.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1617037987145" />
+    <state x="502" y="109" key="AndroidProcessChooserDialog" timestamp="1617204712722">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="502" y="109" key="AndroidProcessChooserDialog/0.0.1366.728@0.0.1366.728" timestamp="1617204712722" />
+    <state x="740" y="260" key="FileChooserDialogImpl" timestamp="1617037956711">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="260" key="FileChooserDialogImpl/1920.132.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1617037956711" />
+    <state x="328" y="0" key="SettingsEditor" timestamp="1617217418616">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="328" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1617217418616" />
+    <state x="461" y="151" key="SettingsEditor/1920.132.1366.728/0.0.1920.1040@0.0.1920.1040" timestamp="1617043197408" />
+    <state x="339" y="157" key="run.anything.popup" timestamp="1617741902036">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="157" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1617741902036" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1617205969386">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1617205969386" />
+  </component>
+</project>
