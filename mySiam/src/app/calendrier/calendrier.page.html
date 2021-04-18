@@ -47,9 +47,9 @@
       <ion-icon name="log-in"></ion-icon>
       Ajouter
     </ion-button>
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button (click)="showHideForm()">
-        <ion-icon *ngIf="showAddEvent" name="close"></ion-icon>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed" >
+      <ion-fab-button (click)="showHideForm()" >
+        <ion-icon class="close" *ngIf="showAddEvent" name="close" ></ion-icon>
       </ion-fab-button>
     </ion-fab>
 
@@ -57,34 +57,39 @@
 
   <div *ngIf="!showAddEvent" class="ion-padding">
     <ion-row ngClass="month-header">
-
-      <ion-col size="2" text-left>
+      <ion-col size="1" >
+      </ion-col>
+      <ion-col size="1" >
         <ion-button fill="clear" (click)="back()">
-          <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
+          <ion-icon name="arrow-back" slot="icon-only" style="color: aliceblue;"></ion-icon>
         </ion-button>
       </ion-col>
-      <ion-col size="7" text-right>
-      </ion-col>
-
+      <ion-col size="3" >
+            </ion-col>
+      <ion-col size="1" >
+        <ion-icon name="calendar-number-sharp" style="font-size: xx-large;" ></ion-icon>
+            </ion-col>
+            <ion-col size="2" >
+                  </ion-col>
       <!-- Move forward one screen of the slides -->
-      <ion-col size="2" text-right>
+      <ion-col size="1" >
         <ion-button fill="clear" (click)="next()">
-          <ion-icon name="arrow-forward" slot="icon-only"></ion-icon>
+          <ion-icon name="arrow-forward" slot="icon-only"  style="color: aliceblue;"></ion-icon>
         </ion-button>
       </ion-col>
     </ion-row>
 
 
-    <calendar id="myCal" [monthviewDisplayEventTemplate]="template" [monthviewEventDetailTemplate]="template1"
+    <calendar id="myCal" [monthviewDisplayEventTemplate]="template"  [monthviewEventDetailTemplate]="template1"
       locale = "fr-FR" [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate"
       (onEventSelected)="onEventSelected($event)" (onTitleChanged)="onViewTitleChanged($event)"
       (onTimeSelected)="onTimeSelected($event)" startHour="12" endHour="13" step="30" [startingDayMonth] = 1
       [format]="'YYYY-MM-DD'">
     </calendar>
   </div>
-
+ 
   <ng-template #template let-view="view" let-row="row" let-col="col">
-    <div [class.with-event]="view.dates[row*7+col].events.length">
+    <div [class.with-event]="view.dates[row*7+col].events.length" style="color: aliceblue;">
       {{view.dates[row*7+col].label}}
       <div class="indicator-container">
         <div class="event-indicator" *ngFor="let e of view.dates[row*7+col].events">
@@ -95,6 +100,7 @@
       </div>
     </div>
   </ng-template>
+  
   <ion-fab *ngIf="showAddEvent" vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="showHideForm()">
       <ion-icon name="close"></ion-icon>
@@ -108,20 +114,27 @@
 
   <ng-template #template1 let-showEventDetail="showEventDetail" let-selectedDate="selectedDate"
     let-noEventsLabel="noEventsLabel">
+    <div  *ngIf="showEventDetail">
+  
+    <ion-card *ngFor="let event of selectedDate?.events" (click)="onEventSelected(event)">
+          <ion-card-header>
+            <ion-card-title>{{event.title}}</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      
+        <ion-card *ngIf="selectedDate?.events.length==0 ">
+          <ion-card-header>
+            <ion-card-title>Pas d'évènement</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      
+      </div>
 
-    <ion-list class="event-detail-container" has-bouncing="false" *ngIf="showEventDetail" overflow-scroll="false">
-      <ion-item *ngFor="let event of selectedDate?.events" (click)="onEventSelected(event)">
-        <span class="event-detail"> {{event.title}} </span>
-      </ion-item>
-      <ion-item *ngIf="selectedDate?.events.length==0">
-        <div>Pas d'évènement</div>
-      </ion-item>
-    </ion-list>
-    <div>
-      <ion-button icon-left size="medium" *ngIf="selectedDate?.events.length==0" expand="full" shape="round" color="light" (click)="showHideForm()" tappable>
-        Ajouter
-      </ion-button>
-    </div>
-
+  
+  <div>
+    <ion-button icon-left size="medium" *ngIf="selectedDate?.events.length==0" expand="full" shape="round" color="light" (click)="showHideForm()" tappable>
+      Ajouter
+    </ion-button>
+  </div>
   </ng-template>
 </ion-content>
