@@ -26,7 +26,7 @@ event-detail {
 }
 
 :host ::ng-deep {
-  
+
   .monthview-primary-with-event {
     background-color: white !important;
   }
@@ -39,10 +39,9 @@ event-detail {
   .inner-scroll{
     color: #f5f6f9 !important;
   }
-  td, th {
+  table, td, th {
       border: 0 !important;
-    }
-
+   }
   ion-content {
             --background: linear-gradient(#F89D57, #F88178);
   }
@@ -62,3 +61,16 @@ event-detail {
   position: relative;
   width: 280px;
 }
+
+.logomy-siam-1-dXBp89 {
+  background-color: transparent;
+  flex-shrink: 1;
+  height: 107px;
+  position: relative;
+  width: 133px;
+  left: 140px;
+}
+
+.table-bordered[_ngcontent-fip-c132]{
+      border: none;
+  }

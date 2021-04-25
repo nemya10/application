@@ -5,6 +5,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { MyModalPage } from '../modals/my-modal/my-modal.page';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-calendrier',
@@ -12,6 +14,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./calendrier.page.scss'],
 })
 export class CalendrierPage implements OnInit {
+dataReturned: any;
 event = {
   id:'',
     title: '',
@@ -37,7 +40,7 @@ event = {
 
   eventSource = [];
   viewTitle;
- 
+
   calendar = {
     mode: 'month',
     currentDate: new Date(),
@@ -48,15 +51,15 @@ event = {
   showAddEv: boolean;
 
   @ViewChild(CalendarComponent) myCal: CalendarComponent;
- 
+
   constructor(private alertCtrl: AlertController, @Inject(LOCALE_ID) private locale: string,
   private toastr: ToastController,
   public afDB: AngularFireDatabase,
   private afAuth: AngularFireAuth,
   private auth: AuthService,
   private loadingCtrl: LoadingController
-  ,   private router: Router
-  ) { 
+  ,   private router: Router ,public modalController: ModalController
+  ) {
   }
   ngOnInit() {
     this.loadEvent();
@@ -65,6 +68,26 @@ event = {
   ionViewWillEnter(){
     this.loadEvent();
   }
+
+  async openModal() {
+      const modal = await this.modalController.create({
+        component: MyModalPage,
+        cssClass: 'my-custom-modal-css',
+        componentProps: {
+          "paramID": 123,
+          "paramTitle": "Test Title"
+        }
+      });
+
+      modal.onDidDismiss().then((dataReturned) => {
+        if (dataReturned !== null) {
+          this.dataReturned = dataReturned.data;
+          //alert('Modal Sent Data :'+ dataReturned);
+        }
+      });
+
+      return await modal.present();
+    }
 
   resetEvent() {
     this.event = {
@@ -81,7 +104,7 @@ event = {
     this.showAddEvent = !this.showAddEvent;
 
   }
- 
+
   addEvent() {
     if (this.event.desc) {
       this.afDB.list('Events/'+ this.useriud).push({
@@ -90,14 +113,14 @@ event = {
         endTime: this.event.endTime,
         allDay: this.event.allDay,
         desc: this.event.desc,
-  
+
       });
       this.showHideForm();
       this.resetEvent();
         } else {
       this.toast('Le champ motif est vide', 'danger');
     }
-    
+
   }
   async loadEvent() {
     const loading = await this.loadingCtrl.create({
@@ -122,28 +145,28 @@ console.log('Events/'+ this.useriud);
         console.log('idd2: '+ action.payload.exportVal().key);
         console.log('direct: '+  action.payload.exportVal().startTime);
         console.log('dat new: '+  new Date(action.payload.exportVal().startTime));
-        if(action.payload.exportVal().title == 'Jour non jeûné'){ 
+        if(action.payload.exportVal().title == 'Jour non jeûné'){
 
          if(action.payload.exportVal().desc == 'Maladie (courte durée)'){
-          this.numberNonJeuneNourrir ++ ; 
+          this.numberNonJeuneNourrir ++ ;
          }
          else if(action.payload.exportVal().desc == 'Maladie (longue durée donc irrattrapable)'){
-          this.numberNonJeuneNourrir ++ ; 
+          this.numberNonJeuneNourrir ++ ;
          }
          else if(action.payload.exportVal().desc == 'Grossesse'){
-          this.numberNonJeune ++ ; 
+          this.numberNonJeune ++ ;
          }
          else if(action.payload.exportVal().desc == 'Allaitement'){
-          this.numberNonJeuneNourrir ++ ; 
-          this.numberNonJeune ++ ; 
-         } 
-         else if(action.payload.exportVal().desc == 'période de menstrue'){
-          this.numberNonJeune ++ ; 
-         } 
-         else if(action.payload.exportVal().desc == 'Voyage'){
-          this.numberNonJeune ++ ; 
+          this.numberNonJeuneNourrir ++ ;
+          this.numberNonJeune ++ ;
          }
-         
+         else if(action.payload.exportVal().desc == 'période de menstrue'){
+          this.numberNonJeune ++ ;
+         }
+         else if(action.payload.exportVal().desc == 'Voyage'){
+          this.numberNonJeune ++ ;
+         }
+
 
         this.eventSource.push({
           id: action.key,
@@ -153,9 +176,9 @@ console.log('Events/'+ this.useriud);
           desc: action.payload.exportVal().desc,
           allDay: action.payload.exportVal().allDay,
           eventColor: 'red'
-        }); 
+        });
       }else{
-        this.numberRecupere ++ ; 
+        this.numberRecupere ++ ;
         console.log('numberRecup: '+  this.numberRecupere);
           this.eventSource.push({
             id: action.key,
@@ -165,7 +188,7 @@ console.log('Events/'+ this.useriud);
             desc: action.payload.exportVal().desc,
             allDay: action.payload.exportVal().allDay,
             eventColor: 'green'
-          }); 
+          });
 
         }
         this.myCal.loadEvents();
@@ -188,11 +211,11 @@ console.log('calendnumberNonnnnnnnCALEND: '+  this.numberNonJeune);
   var swiper = document.querySelector('.swiper-container')['swiper'];
   swiper.slideNext();
 }
- 
+
 back() {
   var swiper = document.querySelector('.swiper-container')['swiper'];
   swiper.slidePrev();
-} 
+}
 // Change between month/week/day
 changeMode(mode) {
   this.calendar.mode = mode;
@@ -204,7 +227,7 @@ today() {
 // Selected date reange and hence title changed
 onViewTitleChanged(title) {
   this.viewTitle = title;
-} 
+}
 // Calendar event was clicked
 async onEventSelected(event) {
   // Use Angular date pipe for conversion
@@ -226,7 +249,7 @@ console.log("heyyyyv " + this.eventS.title);
   });
   alert.present();
 }
- 
+
 // Time slot was clicked
 onTimeSelected(ev) {
   let selected = new Date(ev.selectedTime);

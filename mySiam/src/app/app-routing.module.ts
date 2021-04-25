@@ -35,7 +35,11 @@ const routes: Routes = [
   {
     path: 'compensation',
     loadChildren: () => import('./compensation/compensation.module').then( m => m.CompensationPageModule)
+  },  {
+    path: 'my-modal',
+    loadChildren: () => import('./modals/my-modal/my-modal.module').then( m => m.MyModalPageModule)
   },
+
   
 ];
 

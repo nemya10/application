@@ -3,6 +3,20 @@
    border-left: 2px solid black;
    height: 200px;
  }
+
+ .my-label {
+
+ position: absolute;
+ font-family: Roboto;
+ font-style: normal;
+ font-weight: bold;
+ font-size: 20px;
+ line-height: 21px;
+ text-align: center;
+ color: #F88178;
+
+ }
+
  ion-tab-bar {
    bottom: 20px;
    position: relative;
@@ -10,11 +24,11 @@
    width: 92%;
    margin: 0 auto;
  }
- 
+
  ion-tab-button {
    --color: var(--ion-color-medium);
    --color-selected: var(--ion-color-primary);
- 
+
    &::before {
      background-color: transparent;
      display: block;
@@ -23,8 +37,64 @@
      width: 20px;
      height: 2px;
    }
- 
+
    &.tab-selected::before {
      background-color: var(--ion-color-primary);
    }
  }
+
+.mon-jene-tWi74f {
+   color: #F88178;
+   flex-shrink: 1;
+   font-family: 'Roboto', Helvetica;
+   font-size: 18px;
+   font-style: normal;
+   font-weight: 700;
+   height: auto;
+   letter-spacing: 0.00px;
+   line-height: normal;
+   margin-left: 8px;
+   margin-top: 1.0px;
+   min-height: 21px;
+   min-width: 87px;
+   position: relative;
+   text-align: center;
+   width: auto;
+ }
+
+ .compensations-hsXIYt {
+   color: #F88178;
+   flex-shrink: 1;
+   font-family: 'Roboto', Helvetica;
+   font-size: 18px;
+   font-style: normal;
+   font-weight: 700;
+   height: auto;
+   letter-spacing: 0.00px;
+   line-height: normal;
+   margin-left: 8px;
+   margin-top: 1.0px;
+   min-height: 21px;
+   min-width: 129px;
+   position: relative;
+   text-align: center;
+   width: auto;
+ }
+
+.logo {
+   align-items: flex-start;
+   background-color: transparent;
+   box-sizing: border-box;
+   display: flex;
+   flex-direction: row;
+   flex-shrink: 1;
+   height: 36px;
+   justify-content: flex-start;
+   overflow: hidden;
+   padding: 4.2px 3px;
+   position: relative;
+   width: 100px;
+   color: #F88178;
+ }
+
+

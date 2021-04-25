@@ -1,5 +1,4 @@
 <ion-content padding>
-  <!DOCTYPE html>
   <html>
   <head>
     <meta charset="UTF-8" />
@@ -260,7 +259,7 @@
         --white: rgba(255, 255, 255, 1);
         --white-2: rgba(255, 255, 255, 0.5);
       }
-      hr { 
+      hr {
   display: block;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
@@ -268,164 +267,199 @@
   margin-right: auto;
   border-style: inset;
   border-width: 1px;
-} 
+}
     </style>
   </head>
-  <br>  <br>
   <div class="container-center-horizontal">
     <div class="homepage screen">
       <div class="flex-row-C61RwL">
         <img class="logomy-siam-1-dXBp89" src="assets/logo.png" />
-        <br>  
-
+         <br>
         <div class="mdicalendar-month-dXBp89"><img class="vector-U1fE8l" src="assets/petitCal.svg" (click)="toCalendrier()" /></div>
       </div>
-      <br>  
-      <div class="jours-rattrapage-C61RwL">
-        <img class="ellipse-1-bloVV8" src="assets/eclipse.png" />
-        <div class="nombre-de-jours-rattrapage-bloVV8 roboto-normal-chicago-48px">{{numberNonJeune}}</div>
-        <div class="label-jours-rattrapage-bloVV8 roboto-normal-chicago-18px">Jour à jeûner</div>
+      <div class="avril-2021-C61RwL roboto-bold-white-18px">Avril 2021</div>
+      <div class="jours-de-la-semaine-C61RwL">
+        <div class="lundi-pNSWN4 valign-text-middle roboto-normal-white-18px">L</div>
+        <div class="mardi-pNSWN4 valign-text-middle roboto-normal-white-18px">M</div>
+        <div class="mercredi-pNSWN4 valign-text-middle roboto-normal-white-18px">M</div>
+        <div class="jeudi-pNSWN4 valign-text-middle roboto-normal-white-18px">J</div>
+        <div class="vendredi-pNSWN4 valign-text-middle roboto-normal-white-18px">V</div>
+        <div class="samedi-pNSWN4 valign-text-middle roboto-normal-white-18px">S</div>
+        <div class="dimanche-pNSWN4 valign-text-middle roboto-normal-white-18px">D</div>
       </div>
-      <div class="flex-row-mzXdH9">
-        <div class="jours-rcup-NwNIwt">
-          <div class="fondrcup-gqUHZF"></div>
-          <div class="nombre-de-jours-rcuprs-gqUHZF roboto-normal-chicago-48px">{{numberRecupere}}</div>
-          <div class="jour-rcupr-gqUHZF roboto-normal-chicago-18px">Jour récupéré</div>
+      <div class="flex-row-VMr6Om">
+        <div class="component-1-BdpSxK">
+          <div class="jour-i4951510117-9rG2b0 valign-text-middle roboto-normal-white-18px">19</div>
         </div>
-        <div class="montant-verser-NwNIwt">
-          <div class="fondmontant-hiVJnw"></div>
-          <div class="montant-verser-hiVJnw roboto-normal-chicago-48px">{{numberNonJeuneNourrir}}€</div>
-          <div class="label-montant-hiVJnw roboto-normal-chicago-18px">Montant à verser</div>
+        <div class="component-2-BdpSxK">
+          <div class="jour-i4951610112-KtOlEX valign-text-middle roboto-normal-atomic-tangerine-18px">20</div>
+        </div>
+        <div class="component-3-BdpSxK">
+          <div class="jour-i4951710117-gt82n6 valign-text-middle roboto-normal-white-18px">21</div>
+        </div>
+        <div class="component-4-BdpSxK">
+          <div class="jour-i4951810117-fVQN4V valign-text-middle roboto-normal-white-18px">22</div>
+        </div>
+        <div class="component-5-BdpSxK">
+          <div class="jour-i4951910117-PBxgdW valign-text-middle roboto-normal-white-18px">23</div>
+        </div>
+        <div class="component-6-BdpSxK">
+          <div class="jour-i4952010117-xpfe1G valign-text-middle roboto-normal-white-18px">24</div>
+        </div>
+        <div class="component-7-BdpSxK">
+          <div class="jour-i4952110117-jQXOzQ valign-text-middle roboto-normal-white-18px">25</div>
         </div>
       </div>
-    </div>
-  </div>
+      <br>
+      <div>
+        <div>
+          <div class="jours-rattrapage-C61RwL">
+            <img src="assets/eclipse.png"  (click)="showHidelist2()"/>
+            <div class="nombre-de-jours-rattrapage-bloVV8 roboto-normal-chicago-48px">{{numberNonJeune}}</div>
+            <div class="label-jours-rattrapage-bloVV8 roboto-normal-chicago-18px">Jour à jeûner</div>
+          </div>
+          <div class="flex-row-mzXdH9">
+            <div class="jours-rcup-NwNIwt">
+              <div class="fondrcup-gqUHZF" (click)="showHidelist3()"></div>
+              <div class="nombre-de-jours-rcuprs-gqUHZF roboto-normal-chicago-48px">{{numberRecupere}}</div>
+              <div class="jour-rcupr-gqUHZF roboto-normal-chicago-18px">Jour récupéré</div>
+            </div>
+            <div class="montant-verser-NwNIwt">
+              <div class="fondmontant-hiVJnw" (click)="showHidelist5()"></div>
+              <div class="montant-verser-hiVJnw roboto-normal-chicago-48px">{{numberNonJeuneNourrir}}€</div>
+              <div class="label-montant-hiVJnw roboto-normal-chicago-18px">Montant à verser</div>
+            </div>
+          </div>
 
-  <ion-list>
-    <div class="item-content">
-      <ion-item color="primary">
-        <ion-icon name="open-outline" (click)="showHidelist2()" fill="outline"></ion-icon>
-        <ion-label> &nbsp;&nbsp;Reste à jeûner :</ion-label>
-        <ion-badge color="danger" slot="end">{{numberNonJeune}}</ion-badge>
-      </ion-item>
-      <ion-item color="secondary">
-        <ion-icon name="open-outline" (click)="showHidelist3()" fill="outline"></ion-icon>
-        <ion-label>&nbsp;&nbsp;Jours recuperes :</ion-label>
-        <ion-badge color="danger" slot="end">{{numberRecupere}}</ion-badge>
-      </ion-item>
-      <ion-item color="tertiary">
-        <ion-icon name="open-outline" (click)="showHidelist5()" fill="outline" ></ion-icon>
-        <ion-label>&nbsp;&nbsp;Montant à verser :</ion-label>
-        <ion-badge color="danger" slot="end">{{numberNonJeuneNourrir}}</ion-badge>
-      </ion-item>
-    </div>
-  </ion-list>
+          <div class="bouton-rattrapage-jene-C61RwL">
+            <div class="fond-Xw4sWa"></div>
+            <div class="jai-rattrap-un-jour-de-jene-Xw4sWa valign-text-middle roboto-normal-bittersweet-18px">
+              J’ai rattrapé un jour de jeûne
+            </div>
+          </div>
+          <div class="bouton-non-jene-C61RwL">
+            <div class="fond-VSaOYX" (click)="openModal()"></div>
+            <div class="ce-jour-l-je-nai-pas-jen-VSaOYX valign-text-middle roboto-normal-bittersweet-18px" (click)="openModal()">
+              Ce jour-là je n’ai pas jeûné
+            </div>
+          </div>
 
-  <div *ngIf="(currentStatus == '2')  && !showEditEvent ">
-    <ion-list class="event-detail-container" has-bouncing="false"  overflow-scroll="false">
-      <ion-item *ngIf="eventSourceJ.length != 0">
 
-        <ion-button (click)="close()" fill="outline" slot="end" >Revenir</ion-button>
-      </ion-item>
+        </div>
+      </div>
+      <hr>
+      <div class="split test2" style="overflow-y: scroll;">
+        <div class="centered">
+         <!-- liste jours non jounee -->
+          <div *ngIf="(currentStatus == '2')  && !showEditEvent">
+            <ion-list>
+              <ion-item *ngIf="eventSourceJ.length != 0">
+                <ion-button (click)="close()" fill="outline" slot="end" >Revenir</ion-button>
+              </ion-item>
+              <ion-item *ngFor="let event of eventSourceJ">
+                <ion-card>
+                  <ion-item>
+                    <ion-icon name="star" slot="start"></ion-icon>
+                    <span class="event-detail"> {{event.title}}  </span>
+                    <span class="event-detail"> ( {{event.desc}} ) </span>
+                  </ion-item>
+                  <ion-card-content>
+                    <ion-item>
+                      <ion-datetime displayFormat="DD/MM/YYYY " pickerFormat="MMM D:HH:mm" [(ngModel)]="event.startTime"
+                                    display-timezone="utc" disabled></ion-datetime>
+                      <ion-button (click)="showHideFormEdit(event)" fill="outline" slot="end">Modifier</ion-button>
+                    </ion-item>
+                  </ion-card-content>
+                </ion-card>
+              </ion-item>
+            </ion-list>
+          </div>
 
-      <ion-item *ngFor="let event of eventSourceJ">
-        <ion-card  >
-          <ion-item>
-            <ion-icon name="star" slot="start"></ion-icon>
-            <span class="event-detail"> {{event.title}}  </span>
-            <span class="event-detail"> ( {{event.desc}} ) </span>
+          <div *ngIf="currentStatus=='3' && !showEditEvent">
+            <ion-item *ngIf="eventSourceR.length != 0">
 
-          </ion-item>
-          <ion-card-content>
-            <ion-item>
-              <ion-datetime displayFormat="DD/MM/YYYY " pickerFormat="MMM D:HH:mm" [(ngModel)]="event.startTime"
-                            display-timezone="utc" disabled></ion-datetime>
-
-              <ion-button (click)="showHideFormEdit(event)" fill="outline" slot="end">Modifier</ion-button>
-
-            </ion-item>
-          </ion-card-content>
-        </ion-card>
-      </ion-item>
-    </ion-list>
-  </div>
-
-  <div *ngIf="currentStatus=='3' && !showEditEvent">
-    <ion-item *ngIf="eventSourceR.length != 0">
-
-      <ion-button (click)="close()" fill="outline" slot="end" >Revenir</ion-button>
-    </ion-item>
-
-    <ion-list class="event-detail-container" has-bouncing="false"  overflow-scroll="false">
-      <ion-item *ngFor="let event of eventSourceR" >
-        <ion-card >
-          <ion-item>
-            <ion-icon name="star" slot="start"></ion-icon>
-            <span class="event-detail"> {{event.title}} </span>
-
-          </ion-item>
-          <ion-card-content>
-            <ion-item>
-              <ion-datetime displayFormat="DD/MM/YYYY " pickerFormat="MMM D:HH:mm" [(ngModel)]="event.startTime"
-                            display-timezone="utc" disabled></ion-datetime>
-              <ion-button  icon-left size="medium" expand="full" shape="round" color="dark" (click)="supprimerEventR(event)" tappable>
-                <ion-icon name="log-in"></ion-icon>
-                Supprimer.
-              </ion-button>
+              <ion-button (click)="close()" fill="outline" slot="end" >Revenir</ion-button>
             </ion-item>
 
-          </ion-card-content>
-        </ion-card>
-      </ion-item>
-    </ion-list>
-  </div>
-  <div *ngIf="showEditEvent" class="ion-padding">
-    <ion-card >
-      <ion-card-content >
-        <ion-item disabled>
-          <ion-label>Jour à</ion-label>
-          <ion-label>{{event.title}} </ion-label>
-        </ion-item>
+            <ion-list class="event-detail-container" has-bouncing="false"  overflow-scroll="false">
+              <ion-item *ngFor="let event of eventSourceR" >
+                <ion-card >
+                  <ion-item>
+                    <ion-icon name="star" slot="start"></ion-icon>
+                    <span class="event-detail"> {{event.title}} </span>
 
-        <ion-item >
-          <ion-label>Motif</ion-label>
-          <ion-label>{{event.desc}} </ion-label>
-          <ion-item>
-            <ion-select [(ngModel)]="event.desc" ok-text="Save" cancel-text="Cancel">
-              <ion-select-option value="Maladie (courte durée)">Maladie (courte durée)</ion-select-option>
-              <ion-select-option value="Maladie (longue durée donc irrattrapable)">Maladie (longue durée donc
-                irrattrapable)</ion-select-option>
-              <ion-select-option value="Grossesse">Grossesse</ion-select-option>
-              <ion-select-option value="Allaitement">Allaitement</ion-select-option>
-              <ion-select-option value="période de menstrue">période de menstrue</ion-select-option>
-              <ion-select-option value="Voyage">Voyage</ion-select-option>
-            </ion-select>
-          </ion-item>
-        </ion-item>
-        <ion-item>
-          <ion-label>Date</ion-label>
-          <ion-datetime displayFormat="DD/MM/YYYY " pickerFormat="MMM D:HH:mm" [(ngModel)]="event.startTime" display-timezone="utc" disabled></ion-datetime>
-        </ion-item>
-      </ion-card-content>
-    </ion-card>
-    <ion-button  *ngIf="showEditEvent" icon-left size="medium" expand="full" shape="round" color="dark" (click)="editEventMotif(event)" tappable>
-      <ion-icon name="log-in"></ion-icon>
-      Modifier motif.
-    </ion-button>
-    <ion-button  *ngIf="showEditEvent" icon-left size="medium" expand="full" shape="round" color="dark" (click)="editEventRecup(event)" tappable>
-      <ion-icon name="log-in"></ion-icon>
-      Récuperer ce jour.
-    </ion-button>
-    <ion-button  *ngIf="showEditEvent" icon-left size="medium" expand="full" shape="round" color="dark" (click)="supprimerEventJ(event)" tappable>
-      <ion-icon name="log-in"></ion-icon>
-      Supprimer ce jour.
-    </ion-button>
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed" >
-      <ion-fab-button (click)="showHideFormEditclose()">
-        <ion-icon *ngIf="showEditEvent" name="close"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
+                  </ion-item>
+                  <ion-card-content>
+                    <ion-item>
+                      <ion-datetime displayFormat="DD/MM/YYYY " pickerFormat="MMM D:HH:mm" [(ngModel)]="event.startTime"
+                                    display-timezone="utc" disabled></ion-datetime>
+                      <ion-button  icon-left size="medium" expand="full" shape="round" color="dark" (click)="supprimerEventR(event)" tappable>
+                        <ion-icon name="log-in"></ion-icon>
+                        Supprimer.
+                      </ion-button>
+                    </ion-item>
+
+                  </ion-card-content>
+                </ion-card>
+              </ion-item>
+            </ion-list>
+          </div>
+          <div *ngIf="showEditEvent" class="ion-padding">
+            <ion-card >
+              <ion-card-content >
+                <ion-item disabled>
+                  <ion-label>Jour à</ion-label>
+                  <ion-label>{{event.title}} </ion-label>
+                </ion-item>
+
+                <ion-item >
+                  <ion-label>Motif</ion-label>
+                  <ion-label>{{event.desc}} </ion-label>
+                  <ion-item>
+                    <ion-select [(ngModel)]="event.desc" ok-text="Save" cancel-text="Cancel">
+                      <ion-select-option value="Maladie (courte durée)">Maladie (courte durée)</ion-select-option>
+                      <ion-select-option value="Maladie (longue durée donc irrattrapable)">Maladie (longue durée donc
+                        irrattrapable)</ion-select-option>
+                      <ion-select-option value="Grossesse">Grossesse</ion-select-option>
+                      <ion-select-option value="Allaitement">Allaitement</ion-select-option>
+                      <ion-select-option value="période de menstrue">période de menstrue</ion-select-option>
+                      <ion-select-option value="Voyage">Voyage</ion-select-option>
+                    </ion-select>
+                  </ion-item>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Date</ion-label>
+                  <ion-datetime displayFormat="DD/MM/YYYY " pickerFormat="MMM D:HH:mm" [(ngModel)]="event.startTime" display-timezone="utc" disabled></ion-datetime>
+                </ion-item>
+              </ion-card-content>
+            </ion-card>
+            <ion-button  *ngIf="showEditEvent" icon-left size="medium" expand="full" shape="round" color="dark" (click)="editEventMotif(event)" tappable>
+              <ion-icon name="log-in"></ion-icon>
+              Modifier motif.
+            </ion-button>
+            <ion-button  *ngIf="showEditEvent" icon-left size="medium" expand="full" shape="round" color="dark" (click)="editEventRecup(event)" tappable>
+              <ion-icon name="log-in"></ion-icon>
+              Récuperer ce jour.
+            </ion-button>
+            <ion-button  *ngIf="showEditEvent" icon-left size="medium" expand="full" shape="round" color="dark" (click)="supprimerEventJ(event)" tappable>
+              <ion-icon name="log-in"></ion-icon>
+              Supprimer ce jour.
+            </ion-button>
+            <ion-fab vertical="bottom" horizontal="end" slot="fixed" >
+              <ion-fab-button (click)="showHideFormEditclose()">
+                <ion-icon *ngIf="showEditEvent" name="close"></ion-icon>
+              </ion-fab-button>
+            </ion-fab>
+          </div>
+        </div>
+      </div>
+
+
+
+   </div>
   </div>
+
+
   <div *ngIf="currentStatus == '5'">
     <ion-button (click)="close()" fill="outline" slot="end">Revenir</ion-button>
     <ion-list>

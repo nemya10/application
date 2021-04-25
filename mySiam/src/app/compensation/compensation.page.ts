@@ -4,6 +4,9 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
+import { ModalController } from '@ionic/angular';
+import { MyModalPage } from '../modals/my-modal/my-modal.page';
+import { CalendarComponent } from 'ionic2-calendar';
 
 @Component({
   selector: 'app-compensation',
@@ -11,6 +14,7 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./compensation.page.scss'],
 })
 export class CompensationPage implements OnInit {
+  dataReturned: any;
   currentStatus: string = "0";
   numberNonJeune: number =0;
   numberRecupere: number=0;
@@ -32,7 +36,7 @@ export class CompensationPage implements OnInit {
     };
   constructor(private alertCtrl: AlertController,    private afAuth: AngularFireAuth,
     private auth: AuthService ,   private router: Router,private loadingCtrl: LoadingController,public afDB: AngularFireDatabase
-    ) {
+    ,public modalController: ModalController) {
    }
 
   ngOnInit() {
@@ -113,6 +117,27 @@ export class CompensationPage implements OnInit {
     })
 
  }
+
+async openModal() {
+    const modal = await this.modalController.create({
+      component: MyModalPage,
+      cssClass: 'my-custom-modal-css',
+      componentProps: {
+        "paramID": 123,
+        "paramTitle": "Test Title"
+      }
+    });
+
+    modal.onDidDismiss().then((dataReturned) => {
+      if (dataReturned !== null) {
+        this.dataReturned = dataReturned.data;
+        //alert('Modal Sent Data :'+ dataReturned);
+      }
+    });
+
+    return await modal.present();
+  }
+
   editEventRecup(eventS) {
     this.afDB.list('Events/' + this.useriud).update(eventS.id, {
       title: 'Jour récupéré',
@@ -157,7 +182,7 @@ export class CompensationPage implements OnInit {
     this.currentStatus = "1";
   }
   toCalendrier() {
-  
+
   this.router.navigate(['/home/calendrier']);
   }
   showHidelist2() {
