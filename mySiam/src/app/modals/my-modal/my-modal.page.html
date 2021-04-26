@@ -1,6 +1,266 @@
 <!-- my-modal.page.html -->
-
 <ion-content>
+  <html>
+  <header>
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
+
+      .component-wrapper a,
+      .screen a {
+        text-decoration: none;
+        display: contents;
+      }
+
+      .full-width-a {
+        width: 100%;
+      }
+
+      .full-height-a {
+        height: 100%;
+      }
+
+      .screen textarea:focus,
+      .screen input:focus {
+        outline: none;
+      }
+
+      .screen *,
+      .component-wrapper * {
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .screen div {
+        -webkit-text-size-adjust: none;
+      }
+
+      .container-center-vertical,
+      .container-center-horizontal {
+        pointer-events: none;
+        display: flex;
+        flex-direction: row;
+        padding: 0;
+        margin: 0;
+      }
+
+      .container-center-vertical {
+        align-items: center;
+        height: 100%;
+      }
+
+      .container-center-horizontal {
+        justify-content: center;
+        width: 100%;
+      }
+
+      .container-center-vertical > *,
+      .container-center-horizontal > * {
+        pointer-events: auto;
+        flex-shrink: 0;
+      }
+
+      .component-wrapper,
+      .screen {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        word-break: break-all;
+        word-break: break-word;
+      }
+
+      .auto-animated div {
+        opacity: 0;
+        position: absolute;
+        --z-index: -1;
+      }
+
+      .auto-animated .container-center-vertical,
+      .auto-animated .container-center-horizontal {
+        opacity: 1;
+      }
+
+      .overlay {
+        position: absolute;
+        opacity: 0;
+        display: none;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+      }
+
+      .animate-appear {
+        opacity: 0;
+        display: block;
+        animation: reveal 0.3s ease-in-out 1 normal forwards;
+      }
+
+      .animate-disappear {
+        opacity: 1;
+        display: block;
+        animation: reveal 0.3s ease-in-out 1 reverse forwards;
+      }
+
+      .animate-nodelay {
+        animation-delay: 0s;
+      }
+
+      @keyframes reveal {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      .align-self-flex-start {
+        align-self: flex-start;
+      }
+      .align-self-flex-end {
+        align-self: flex-end;
+      }
+      .align-self-flex-center {
+        align-self: center;
+      }
+      .valign-text-middle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .valign-text-bottom {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+      input:focus {
+        outline: none;
+      }
+      .component-wrapper,
+      .component-wrapper * {
+        pointer-events: none;
+      }
+
+      .component-wrapper a *,
+      .component-wrapper a,
+      .component-wrapper input,
+      .component-wrapper video,
+      .component-wrapper iframe,
+      .listeners-active,
+      .listeners-active * {
+        pointer-events: auto;
+      }
+
+      .hidden,
+      .hidden * {
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      .smart-layers-pointers,
+      .smart-layers-pointers * {
+        pointer-events: auto;
+        visibility: visible;
+      }
+
+      .component-wrapper.not-ready,
+      .component-wrapper.not-ready * {
+        visibility: hidden !important;
+      }
+
+      .listeners-active-click,
+      .listeners-active-click * {
+        cursor: pointer;
+      }
+
+      @import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
+      * {
+        box-sizing: border-box;
+      }
+      .border-1px-chicago {
+        border: 1px solid var(--chicago);
+      }
+      .roboto-bold-chicago-20px {
+        color: var(--chicago);
+        font-family: "Roboto", Helvetica;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+      }
+      .roboto-bold-white-18px {
+        color: var(--white);
+        font-family: "Roboto", Helvetica;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 700;
+      }
+      .roboto-normal-atomic-tangerine-18px {
+        color: var(--atomic-tangerine-2);
+        font-family: "Roboto", Helvetica;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+      }
+      .roboto-normal-bittersweet-18px {
+        color: var(--bittersweet);
+        font-family: "Roboto", Helvetica;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+      }
+      .roboto-normal-black-18px {
+        color: var(--black);
+        font-family: "Roboto", Helvetica;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+      }
+      .roboto-normal-black-48px {
+        color: var(--black);
+        font-family: "Roboto", Helvetica;
+        font-size: 48px;
+        font-style: normal;
+        font-weight: 400;
+      }
+      .roboto-normal-chicago-18px {
+        color: var(--chicago);
+        font-family: "Roboto", Helvetica;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+      }
+      .roboto-normal-chicago-48px {
+        color: var(--chicago);
+        font-family: "Roboto", Helvetica;
+        font-size: 48px;
+        font-style: normal;
+        font-weight: 400;
+      }
+      .roboto-normal-tan-hide-18px {
+        color: var(--tan-hide);
+        font-family: "Roboto", Helvetica;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+      }
+      .roboto-normal-white-18px {
+        color: var(--white);
+        font-family: "Roboto", Helvetica;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+      }
+      :root {
+        --atomic-tangerine: rgba(248, 147, 99, 1);
+        --atomic-tangerine-2: rgba(248, 148, 97, 1);
+        --bittersweet: rgba(248, 129, 120, 1);
+        --bittersweet-2: rgba(248, 129, 120, 0.5);
+        --black: rgba(0, 0, 0, 1);
+        --chicago: rgba(94, 94, 94, 1);
+        --tan-hide: rgba(248, 157, 86, 1);
+        --white: rgba(255, 255, 255, 1);
+        --white-2: rgba(255, 255, 255, 0.5);
+      }
+    </style>
+  </header>
   <div class="choix-motif-non-jene-4eduM0 animate-enter2">
     <div class="fond-ZxI5OY border-1px-chicago"></div>
       <div class="maladie-ZxI5OY">
@@ -29,4 +289,5 @@
       ></a>
   </div>
   <div class="home-indicator-4eduM0"></div>
+  </html>
 </ion-content>
