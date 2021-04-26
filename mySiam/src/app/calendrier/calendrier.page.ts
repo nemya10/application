@@ -66,16 +66,20 @@ event = {
     this.resetEvent();
   }
   ionViewWillEnter(){
+    console.log("lool");
+    
     this.loadEvent();
   }
 
   async openModal() {
+    console.log("loooooooool" + Date.now());
+    
       const modal = await this.modalController.create({
         component: MyModalPage,
         cssClass: 'my-custom-modal-css',
         componentProps: {
-          "paramID": 123,
-          "paramTitle": "Test Title"
+          "paramID": this.useriud,
+          "paramTitle": Date.now()
         }
       });
 
@@ -104,7 +108,12 @@ event = {
     this.showAddEvent = !this.showAddEvent;
 
   }
-
+  resetall(desc) {
+    console.log("alooooooooooo" + desc);
+    this.afDB.list('Events/'+ this.useriud).remove();
+      this.resetEvent();
+      this.ionViewWillEnter();
+  }
   addEvent() {
     if (this.event.desc) {
       this.afDB.list('Events/'+ this.useriud).push({
@@ -139,12 +148,11 @@ console.log('Events/'+ this.useriud);
     this.afDB.list('Events/'+ data.uid).snapshotChanges(['child_added']).subscribe(actions => {
       this.eventSource = [];
       actions.forEach(action => {
-        console.log('action:' + action.payload.exportVal().title);
-        console.log('boolean: '+ action.payload.exportVal().title == 'Jour récupéré');
-        console.log('idd1: '+ action.key);
-        console.log('idd2: '+ action.payload.exportVal().key);
-        console.log('direct: '+  action.payload.exportVal().startTime);
-        console.log('dat new: '+  new Date(action.payload.exportVal().startTime));
+        // console.log('action:' + action.payload.exportVal().title);
+        // console.log('idd1: '+ action.key);
+        // console.log('idd2: '+ action.payload.exportVal().key);
+        // console.log('direct: '+  action.payload.exportVal().startTime);
+        // console.log('dat new: '+  new Date(action.payload.exportVal().startTime));
         if(action.payload.exportVal().title == 'Jour non jeûné'){
 
          if(action.payload.exportVal().desc == 'Maladie (courte durée)'){
@@ -179,7 +187,6 @@ console.log('Events/'+ this.useriud);
         });
       }else{
         this.numberRecupere ++ ;
-        console.log('numberRecup: '+  this.numberRecupere);
           this.eventSource.push({
             id: action.key,
             title: action.payload.exportVal().title,
@@ -195,12 +202,7 @@ console.log('Events/'+ this.useriud);
         loading.dismiss();
 
       });
-//       this.auth.numberNonJeune=this.numberNonJeune;
-// this.auth.numberNonJeuneNourrir=this.numberNonJeuneNourrir*7;
-// this.auth.numberRecupere=this.numberRecupere;
-console.log('calendnumberNonnnnnnnCALEND: '+  this.numberNonJeune);
-      console.log('calendnumberNonNourrrrrrrrCALEND: '+  this.numberNonJeuneNourrir*7);
-      console.log('calendnumberRecup:CALEND '+  this.numberRecupere);
+
     });
   })
 
@@ -240,8 +242,6 @@ async onEventSelected(event) {
   allDay: true,
   eventColor:event.eventColor
 };
-console.log("heyyyyv " + this.eventS.title);
-
   const alert = await this.alertCtrl.create({
     header: event.title,
     subHeader: "motif : " + event.desc,

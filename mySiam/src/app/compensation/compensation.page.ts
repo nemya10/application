@@ -22,6 +22,11 @@ export class CompensationPage implements OnInit {
   test: number=0;
   eventSourceR = [];
   eventSourceJ = [];
+  eventSourceJV = [];
+  eventSourceV = [];
+  // eventSourceJ = [];
+  yesEvent: boolean;
+
   showEditEvent: boolean;
   val = "";
   useriud = ''
@@ -40,63 +45,122 @@ export class CompensationPage implements OnInit {
    }
 
   ngOnInit() {
+    console.log("heyyy" + this.yesEvent);
+    
+    this.yesEvent=false;
     this.loadEvent();
 
 
   }
   ionViewWillEnter(){
+    this.yesEvent=false;
     this.loadEvent();
     this.currentStatus ='0';
    }
 
   async loadEvent() {
-
     this.afAuth.authState.subscribe(data => {
       this.useriud = data.uid;
-      if(!this.useriud)
-      {
-        return
-      }
       console.log('Events/' + this.useriud);
         this.afDB.list('Events/' + data.uid).snapshotChanges(['child_added']).subscribe(actions => {
-        this.eventSourceJ = [];
-        this.eventSourceR = [];
+          this.eventSourceR = [];
+          this.eventSourceJ = [];
+          this.eventSourceJV = [];
+          this.eventSourceV = [];
         this.numberNonJeune=0;
         this.numberRecupere=0;
         this.numberNonJeuneNourrir=0;
         actions.forEach(action => {
+          const date = new Date(action.payload.exportVal().endTime);
+const day = date.getDay();
+const month = date.getMonth;
+const date1 = new Date().toISOString();
+const day1 = date.getDay();
+const month1 = date.getMonth;
+          
 
+if( day == day1 && month == month1 && !this.yesEvent ){
+  console.log("true laaa");
+  
+  this.yesEvent = true ;
+}
           if (action.payload.exportVal().title == 'Jour non jeûné') {
             if (action.payload.exportVal().desc == 'Maladie (courte durée)') {
               this.numberNonJeuneNourrir++;
+              this.eventSourceV.push({
+                id: action.key,
+                title: action.payload.exportVal().title,
+                startTime: action.payload.exportVal().startTime,
+                endTime: new Date(action.payload.exportVal().endTime).toISOString,
+                desc: action.payload.exportVal().desc,
+                allDay: action.payload.exportVal().allDay,
+                eventColor: 'red'
+              });
             }
             else if (action.payload.exportVal().desc == 'Maladie (longue durée donc irrattrapable)') {
               this.numberNonJeuneNourrir++;
+              this.eventSourceV.push({
+                id: action.key,
+                title: action.payload.exportVal().title,
+                startTime: action.payload.exportVal().startTime,
+                endTime: new Date(action.payload.exportVal().endTime).toISOString,
+                desc: action.payload.exportVal().desc,
+                allDay: action.payload.exportVal().allDay,
+                eventColor: 'red'
+              });
             }
             else if (action.payload.exportVal().desc == 'Grossesse') {
               this.numberNonJeune++;
+              this.eventSourceJ.push({
+                id: action.key,
+                title: action.payload.exportVal().title,
+                startTime: action.payload.exportVal().startTime,
+                endTime: new Date(action.payload.exportVal().endTime).toISOString,
+                desc: action.payload.exportVal().desc,
+                allDay: action.payload.exportVal().allDay,
+                eventColor: 'red'
+              });
             }
             else if (action.payload.exportVal().desc == 'Allaitement') {
               this.numberNonJeuneNourrir++;
               this.numberNonJeune++;
+              this.eventSourceJV.push({
+                id: action.key,
+                title: action.payload.exportVal().title,
+                startTime: action.payload.exportVal().startTime,
+                endTime: new Date(action.payload.exportVal().endTime).toISOString,
+                desc: action.payload.exportVal().desc,
+                allDay: action.payload.exportVal().allDay,
+                eventColor: 'red'
+              });
             }
             else if (action.payload.exportVal().desc == 'Période de menstrue') {
               this.numberNonJeune++;
+              this.eventSourceJ.push({
+                id: action.key,
+                title: action.payload.exportVal().title,
+                startTime: action.payload.exportVal().startTime,
+                endTime: new Date(action.payload.exportVal().endTime).toISOString,
+                desc: action.payload.exportVal().desc,
+                allDay: action.payload.exportVal().allDay,
+                eventColor: 'red'
+              });
             }
             else if (action.payload.exportVal().desc == 'Voyage') {
               this.numberNonJeune++;
+              this.eventSourceJ.push({
+                id: action.key,
+                title: action.payload.exportVal().title,
+                startTime: action.payload.exportVal().startTime,
+                endTime: new Date(action.payload.exportVal().endTime).toISOString,
+                desc: action.payload.exportVal().desc,
+                allDay: action.payload.exportVal().allDay,
+                eventColor: 'red'
+              });
             }
             //  console.log('numberNonnnnnnn: '+  this.numberNonJeune);
             //  console.log('numberNonNourrrrrrrr: '+  this.numberNonJeuneNourrir);
-             this.eventSourceJ.push({
-              id: action.key,
-              title: action.payload.exportVal().title,
-              startTime: action.payload.exportVal().startTime,
-              endTime: new Date(action.payload.exportVal().endTime).toISOString,
-              desc: action.payload.exportVal().desc,
-              allDay: action.payload.exportVal().allDay,
-              eventColor: 'red'
-            });
+           
           } else {
             this.numberRecupere++;
             this.eventSourceR.push({
@@ -115,16 +179,30 @@ export class CompensationPage implements OnInit {
         this.numberNonJeuneNourrir =this.numberNonJeuneNourrir*7;
       });
     })
+    console.log("alafin laaa" + this.yesEvent);
 
  }
 
 async openModal() {
+
+  if(this.yesEvent == true){
+    console.log("aloooooggggoo" + this.yesEvent);
+
+    const alert = await this.alertCtrl.create({
+      header: 'impossible',
+      subHeader: "Jour déja non jeuné ou récupéré ",
+      buttons: ['OK']
+    });    
+    alert.present();
+
+    return;
+  }
     const modal = await this.modalController.create({
       component: MyModalPage,
       cssClass: 'my-custom-modal-css',
       componentProps: {
-        "paramID": 123,
-        "paramTitle": "Test Title"
+        "paramID": this.useriud,
+        "paramTitle": new Date().toISOString()
       }
     });
 
@@ -138,13 +216,37 @@ async openModal() {
     return await modal.present();
   }
 
-  editEventRecup(eventS) {
-    this.afDB.list('Events/' + this.useriud).update(eventS.id, {
-      title: 'Jour récupéré',
-      desc: '',
-    });
-    this.showHideFormEditclose();
-    this.ngOnInit();
+  editEventRecupV(eventS) {
+    if(this.eventSourceV.length != 0 ){
+      this.afDB.list('Events/' + this.useriud).update(this.eventSourceV[0].id, {
+        title: 'Jour récupéré',
+        desc: '',
+      });
+      this.showHideFormEditclose();
+      this.ngOnInit();
+          }
+
+  
+  }
+  editEventRecupJ(eventS) {
+    if(this.eventSourceJ.length != 0 ){
+      this.afDB.list('Events/' + this.useriud).update(this.eventSourceJ[0].id, {
+        title: 'Jour récupéré',
+        desc: '',
+      });
+      this.showHideFormEditclose();
+      this.ngOnInit();
+          }
+  }
+  editEventRecupJV(eventS) {
+    if(this.eventSourceJV.length != 0 ){
+      this.afDB.list('Events/' + this.useriud).update(this.eventSourceJV[0].id, {
+        title: 'Jour récupéré',
+        desc: '',
+      });
+      this.showHideFormEditclose();
+      this.ngOnInit();
+          }
   }
   editEventMotif(eventS) {
     this.afDB.list('Events/' + this.useriud).update(eventS.id, {

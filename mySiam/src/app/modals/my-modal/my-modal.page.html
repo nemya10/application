@@ -5,19 +5,19 @@
     <div class="fond-ZxI5OY border-1px-chicago"></div>
       <div class="maladie-ZxI5OY">
         <div class="mdihuman-cane-v8zYz0"><img class="vector-RuIKoL" src="assets/maladie.svg" /></div>
-        <div class="maladie-v8zYz0 valign-text-middle roboto-normal-chicago-18px">Maladie</div>
+        <div  (click)="addEvent('Maladie')" class="maladie-v8zYz0 valign-text-middle roboto-normal-chicago-18px">Maladie</div>
       </div>
-      <div class="allaitement-ZxI5OY">
+      <div (click)="addEvent('Allaitement')" class="allaitement-ZxI5OY">
         <div class="mdibaby-bottle-3ZIm0l"><img class="vector-U7MN8a" src="assets/allaitement.svg" /></div>
         <div class="allaitement-3ZIm0l valign-text-middle roboto-normal-chicago-18px">Allaitement</div>
       </div>
-      <div class="grossesse-ZxI5OY">
-        <div class="mdihuman-pregnant-RKe0xM"><img class="vector-Er10R4" src="assets/grossesse.svg" /></div>
-        <div class="grossesse-RKe0xM valign-text-middle roboto-normal-chicago-18px">Grossesse</div>
+      <div (click)="addEvent('Grossesse')" class="grossesse-ZxI5OY">
+        <div (click)="addEvent('Grossesse')" class="mdihuman-pregnant-RKe0xM"><img class="vector-Er10R4" src="assets/grossesse.svg" /></div>
+        <div (click)="addEvent('Grossesse')" class="grossesse-RKe0xM valign-text-middle roboto-normal-chicago-18px">Grossesse</div>
       </div>
-      <div class="menstruations-ZxI5OY">
-        <div class="mdiwater-sa3Thj"><img class="vector-yCaI6Y" src="assets/menstruations.svg" /></div>
-        <div class="menstruations-sa3Thj valign-text-middle roboto-normal-chicago-18px">Menstruations</div>
+      <div (click)="addEvent('Menstruations')"class="menstruations-ZxI5OY">
+        <div (click)="addEvent('Menstruations')" class="mdiwater-sa3Thj"><img class="vector-yCaI6Y" src="assets/menstruations.svg" /></div>
+        <div (click)="addEvent('Menstruations')" class="menstruations-sa3Thj valign-text-middle roboto-normal-chicago-18px">Menstruations</div>
       </div>
     <div class="ce-jour-l-je-nai-pas-jen-ZxI5OY valign-text-middle roboto-bold-chicago-20px">
       Ce jour-là je n’ai pas jeûné
@@ -27,10 +27,6 @@
         <img class="vector-Y5FX98" src="assets/croix.svg"  (click)="closeModal()"/>
         <img class="vector-ytdDTH" src="assets/cercle.svg" (click)="closeModal()"/></div
       ></a>
-  </div>
-  <div class="bouton-valider-4eduM0">
-    <div class="fond-gGIPIz"></div>
-    <div class="valider-gGIPIz">Valider</div>
   </div>
   <div class="home-indicator-4eduM0"></div>
 </ion-content>

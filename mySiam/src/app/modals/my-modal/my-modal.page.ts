@@ -1,5 +1,6 @@
 // my-modal.page.ts
 import { Component, OnInit } from '@angular/core';
+import { AngularFireDatabase } from '@angular/fire/database';
 import {
 ModalController,
 NavParams
@@ -15,10 +16,19 @@ export class MyModalPage implements OnInit {
 
   modalTitle: string;
   modelId: number;
-
+  event = {
+    id:'',
+      title: '',
+      desc: '',
+      startTime: new Date().toDateString(),
+      endTime: new Date().toDateString(),
+      allDay: true,
+      eventColor:""
+    };
   constructor(
     private modalController: ModalController,
-    private navParams: NavParams
+    private navParams: NavParams,
+    public afDB: AngularFireDatabase
   ) { }
 
   ngOnInit() {
@@ -32,4 +42,30 @@ export class MyModalPage implements OnInit {
     await this.modalController.dismiss(onClosedData);
   }
 
+  addEvent(desc) {
+    console.log("alooooooooooo" + desc);
+    console.log("alooooooooooo" + this.modalTitle);
+      this.afDB.list('Events/'+ this.modelId).push({
+        title: 'Jour non jeûné',
+        startTime:  this.modalTitle,
+        endTime:this.modalTitle,
+        allDay: true,
+        desc: desc,
+
+      });
+      this.resetEvent();
+      this.closeModal();
+  }
+ 
+  resetEvent() {
+    this.event = {
+      id:'',
+      title: '',
+      desc: '',
+      startTime: new Date().toDateString(),
+      endTime: new Date().toDateString(),
+      allDay: true,
+      eventColor:""
+    };
+  }
 }
