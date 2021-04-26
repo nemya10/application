@@ -46,7 +46,7 @@ export class CompensationPage implements OnInit {
 
   ngOnInit() {
     console.log("heyyy" + this.yesEvent);
-    
+
     this.yesEvent=false;
     this.loadEvent();
 
@@ -77,11 +77,11 @@ const month = date.getMonth;
 const date1 = new Date().toISOString();
 const day1 = date.getDay();
 const month1 = date.getMonth;
-          
+
 
 if( day == day1 && month == month1 && !this.yesEvent ){
   console.log("true laaa");
-  
+
   this.yesEvent = true ;
 }
           if (action.payload.exportVal().title == 'Jour non jeûné') {
@@ -134,7 +134,7 @@ if( day == day1 && month == month1 && !this.yesEvent ){
                 eventColor: 'red'
               });
             }
-            else if (action.payload.exportVal().desc == 'Période de menstrue') {
+            else if (action.payload.exportVal().desc == 'période de menstrue') {
               this.numberNonJeune++;
               this.eventSourceJ.push({
                 id: action.key,
@@ -160,7 +160,7 @@ if( day == day1 && month == month1 && !this.yesEvent ){
             }
             //  console.log('numberNonnnnnnn: '+  this.numberNonJeune);
             //  console.log('numberNonNourrrrrrrr: '+  this.numberNonJeuneNourrir);
-           
+
           } else {
             this.numberRecupere++;
             this.eventSourceR.push({
@@ -192,7 +192,7 @@ async openModal() {
       header: 'impossible',
       subHeader: "Jour déja non jeuné ou récupéré ",
       buttons: ['OK']
-    });    
+    });
     alert.present();
 
     return;
@@ -226,7 +226,7 @@ async openModal() {
       this.ngOnInit();
           }
 
-  
+
   }
   editEventRecupJ(eventS) {
     if(this.eventSourceJ.length != 0 ){

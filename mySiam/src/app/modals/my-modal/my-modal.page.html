@@ -221,14 +221,14 @@
         font-weight: 400;
       }
       .roboto-normal-chicago-18px {
-        color: var(--chicago);
+        color: #FFFFFF;
         font-family: "Roboto", Helvetica;
         font-size: 18px;
         font-style: normal;
         font-weight: 400;
       }
       .roboto-normal-chicago-48px {
-        color: var(--chicago);
+        color: #FFFFFF;
         font-family: "Roboto", Helvetica;
         font-size: 48px;
         font-style: normal;
@@ -261,23 +261,27 @@
       }
     </style>
   </header>
-  <div class="choix-motif-non-jene-4eduM0 animate-enter2">
+  <div class="choix-motif-non-jene-4eduM0 animate-enter2" *ngIf="(currentStatus == '0')">
     <div class="fond-ZxI5OY border-1px-chicago"></div>
-      <div class="maladie-ZxI5OY">
-        <div class="mdihuman-cane-v8zYz0"><img class="vector-RuIKoL" src="assets/maladie.svg" /></div>
-        <div  (click)="addEvent('Maladie')" class="maladie-v8zYz0 valign-text-middle roboto-normal-chicago-18px">Maladie</div>
+      <div class="maladie-ZxI5OY" (click)="showChoixMaladie()">
+        <div class="fondselectionmotif-ZxI5OY1"></div>
+        <div class="mdihuman-cane-v8zYz0"><img class="vector-RuIKoL" src="assets/maladie.png" /></div>
+        <div class="maladie-v8zYz0 valign-text-middle roboto-normal-chicago-18px">Maladie</div>
       </div>
-      <div (click)="addEvent('Allaitement')" class="allaitement-ZxI5OY">
-        <div class="mdibaby-bottle-3ZIm0l"><img class="vector-U7MN8a" src="assets/allaitement.svg" /></div>
+      <div class="allaitement-ZxI5OY" (click)="addEvent('Allaitement')">
+        <div class="fondselectionmotif-ZxI5OY2"></div>
+        <div class="mdibaby-bottle-3ZIm0l"><img class="vector-U7MN8a" src="assets/allaitement.png" /></div>
         <div class="allaitement-3ZIm0l valign-text-middle roboto-normal-chicago-18px">Allaitement</div>
       </div>
-      <div (click)="addEvent('Grossesse')" class="grossesse-ZxI5OY">
-        <div (click)="addEvent('Grossesse')" class="mdihuman-pregnant-RKe0xM"><img class="vector-Er10R4" src="assets/grossesse.svg" /></div>
-        <div (click)="addEvent('Grossesse')" class="grossesse-RKe0xM valign-text-middle roboto-normal-chicago-18px">Grossesse</div>
+      <div class="grossesse-ZxI5OY" (click)="showChoixGrossesse()">
+        <div class="fondselectionmotif-ZxI5OY3"></div>
+        <div class="mdihuman-pregnant-RKe0xM"><img class="vector-Er10R4" src="assets/grossesse.png" /></div>
+        <div class="grossesse-RKe0xM valign-text-middle roboto-normal-chicago-18px">Grossesse</div>
       </div>
-      <div (click)="addEvent('Menstruations')"class="menstruations-ZxI5OY">
-        <div (click)="addEvent('Menstruations')" class="mdiwater-sa3Thj"><img class="vector-yCaI6Y" src="assets/menstruations.svg" /></div>
-        <div (click)="addEvent('Menstruations')" class="menstruations-sa3Thj valign-text-middle roboto-normal-chicago-18px">Menstruations</div>
+      <div  class="menstruations-ZxI5OY" (click)="addEvent('période de menstrue')">
+        <div class="fondselectionmotif-ZxI5OY4"></div>
+        <div class="mdiwater-sa3Thj"><img class="vector-yCaI6Y" src="assets/menstruations.png" /></div>
+        <div class="menstruations-sa3Thj valign-text-middle roboto-normal-chicago-18px">Menstruations</div>
       </div>
     <div class="ce-jour-l-je-nai-pas-jen-ZxI5OY valign-text-middle roboto-bold-chicago-20px">
       Ce jour-là je n’ai pas jeûné
@@ -286,6 +290,54 @@
         <img class="vector-Y5FX98" src="assets/croix.svg"  (click)="closeModal()"/>
         <img class="vector-ytdDTH" src="assets/cercle.svg" (click)="closeModal()"/></div>
   </div>
+
+
+  <div class="choix-motif-non-jene-4eduM0 animate-enter2" *ngIf="(currentStatus == '1')">
+    <div class="fond-ZxI5OY border-1px-chicago"></div>
+    <div class="maladie-ZxI5OY" (click)="addEvent('Maladie (courte durée)')">
+      <div class="fondselectionmotif-ZxI5OY1"></div>
+      <div class="mdihuman-cane-v8zYz0"><img class="vector-RuIKoL" src="assets/maladiecourte.png" /></div>
+      <div class="maladie-v8zYz0 valign-text-middle roboto-normal-chicago-18px">Maladie courte</div>
+    </div>
+    <div class="allaitement-ZxI5OY" (click)="addEvent('Maladie (longue durée donc irrattrapable)')">
+      <div class="fondselectionmotif-ZxI5OY2"></div>
+      <div class="mdibaby-bottle-3ZIm0l"><img class="vector-U7MN8a" src="assets/maladielongue.png" /></div>
+      <div class="allaitement-3ZIm0l valign-text-middle roboto-normal-chicago-18px">Maladie longue</div>
+    </div>
+    <div class="vieillesse-ZxI5OY" (click)="addEvent('Vieillesse')">
+      <div class="fondselectionmotif-ZxI5OY3"></div>
+      <div class="mdihuman-pregnant-RKe0xM"><img class="vector-Er10R4" src="assets/vieillesse.png" /></div>
+      <div class="grossesse-RKe0xM valign-text-middle roboto-normal-chicago-18px">Vieillesse</div>
+    </div>
+    <div class="ce-jour-l-je-nai-pas-jen-ZxI5OY valign-text-middle roboto-bold-chicago-20px">
+      Ce jour-là je n’ai pas jeûné
+    </div>
+    <div class="claritytimes-circle-line-ZxI5OY">
+      <img class="vector-Y5FX98" src="assets/croix.svg"  (click)="closeModal()"/>
+      <img class="vector-ytdDTH" src="assets/cercle.svg" (click)="closeModal()"/></div>
+  </div>
+
+  <div class="choix-motif-non-jene-4eduM0 animate-enter2" *ngIf="(currentStatus == '2')">
+    <div class="fond-ZxI5OY border-1px-chicago"></div>
+    <div class="peurpourmoi-ZxI5OY" (click)="addEvent('Grossesse')">
+      <div class="fondselectionmotif-ZxI5OY1"></div>
+      <div class="mdihuman-cane-v8zYz0"><img class="vector-RuIKoL" src="assets/pourmoi.png" /></div>
+      <div class="peur-pour-moi-mme-ZY6V8z valign-text-middle roboto-normal-chicago-18px">Peur pour <br> moi-même</div>
+    </div>
+    <div class="vieillesse-ZxI5OY" (click)="addEvent('Grossesse')">
+      <div class="fondselectionmotif-ZxI5OY3"></div>
+      <div class="mdihuman-pregnant-RKe0xM"><img class="vector-Er10R4" src="assets/pourbebe.png" /></div>
+      <div class="peur-pour-le-bb-Jqu2E8 valign-text-middle roboto-normal-chicago-18px">Peur pour le bébé</div>
+    </div>
+    <div class="ce-jour-l-je-nai-pas-jen-ZxI5OY valign-text-middle roboto-bold-chicago-20px">
+      Ce jour-là je n’ai pas jeûné
+    </div>
+    <div class="claritytimes-circle-line-ZxI5OY">
+      <img class="vector-Y5FX98" src="assets/croix.svg"  (click)="closeModal()"/>
+      <img class="vector-ytdDTH" src="assets/cercle.svg" (click)="closeModal()"/></div>
+  </div>
+
+
   <div class="home-indicator-4eduM0"></div>
   </html>
 </ion-content>

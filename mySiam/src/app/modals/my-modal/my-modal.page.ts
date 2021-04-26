@@ -13,7 +13,7 @@ NavParams
 })
 export class MyModalPage implements OnInit {
 
-
+  currentStatus: string = "0";
   modalTitle: string;
   modelId: number;
   event = {
@@ -56,7 +56,7 @@ export class MyModalPage implements OnInit {
       this.resetEvent();
       this.closeModal();
   }
- 
+
   resetEvent() {
     this.event = {
       id:'',
@@ -67,5 +67,12 @@ export class MyModalPage implements OnInit {
       allDay: true,
       eventColor:""
     };
+  }
+
+  showChoixMaladie(){
+   this.currentStatus ='1';
+  }
+  showChoixGrossesse(){
+     this.currentStatus ='2';
   }
 }
