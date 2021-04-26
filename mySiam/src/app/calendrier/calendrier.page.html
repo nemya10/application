@@ -13,47 +13,7 @@
   <ion-button  icon-left size="medium" expand="full" shape="round" color="light" (click)="resetall()" tappable>
     remove all
   </ion-button>
-  <div *ngIf="showAddEvent" class="ion-padding">
-    <ion-card>
-      <ion-card-content>
-        <ion-item>
-          <ion-label>Jour</ion-label>
-          <ion-label>Jour non jeûné </ion-label>
-        </ion-item>
-        <ion-item>
 
-        <ion-label>Motif</ion-label>
-        <ion-select [(ngModel)]="event.desc" ok-text="Save" cancel-text="Cancel">
-          <ion-select-option value="Maladie (courte durée)">Maladie <br>(courte durée)</ion-select-option>
-          <ion-select-option value="Maladie (longue durée donc irrattrapable)">Maladie <br>(longue durée donc irrattrapable)</ion-select-option>
-          <ion-select-option value="Grossesse">Grossesse</ion-select-option>
-          <ion-select-option value="Allaitement">Allaitement</ion-select-option>
-          <ion-select-option value="Période de menstrue">période de menstrue</ion-select-option>
-          <ion-select-option value="Voyage">Voyage</ion-select-option>
-        </ion-select>
-        </ion-item>
-        <ion-item>
-          <ion-label position="stacked"></ion-label>
-          <ion-input tpye="text" [(ngModel)]="event.desc"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label>Date</ion-label>
-          <ion-datetime displayFormat="DD/MM/YYYY " pickerFormat="MMM D:HH:mm" [(ngModel)]="event.startTime"
-            display-timezone="utc" disabled></ion-datetime>
-        </ion-item>
-
-      </ion-card-content>
-    </ion-card>
-    <ion-button *ngIf="showAddEvent" icon-left size="medium" expand="full" shape="round" color="light" (click)="addEvent()" tappable>
-      Ajouter
-    </ion-button>
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed" >
-      <ion-fab-button (click)="showHideForm()" >
-        <ion-icon class="close" *ngIf="showAddEvent" name="close" ></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
-
-  </div>
 
   <div *ngIf="!showAddEvent" class="ion-padding">
 
@@ -129,16 +89,59 @@
           </ion-card-header>
         </ion-card>
 
-      </div>
+    </div>
 
+
+    <!--
+    <div *ngIf="showAddEvent" class="ion-padding">
+      <ion-card>
+        <ion-card-content>
+          <ion-item>
+            <ion-label>Jour</ion-label>
+            <ion-label>Jour non jeûné </ion-label>
+          </ion-item>
+          <ion-item>
+
+            <ion-label>Motif</ion-label>
+            <ion-select [(ngModel)]="event.desc" ok-text="Save" cancel-text="Cancel">
+              <ion-select-option value="Maladie (courte durée)">Maladie <br>(courte durée)</ion-select-option>
+              <ion-select-option value="Maladie (longue durée donc irrattrapable)">Maladie <br>(longue durée donc irrattrapable)</ion-select-option>
+              <ion-select-option value="Grossesse">Grossesse</ion-select-option>
+              <ion-select-option value="Allaitement">Allaitement</ion-select-option>
+              <ion-select-option value="Période de menstrue">période de menstrue</ion-select-option>
+              <ion-select-option value="Voyage">Voyage</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked"></ion-label>
+            <ion-input tpye="text" [(ngModel)]="event.desc"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Date</ion-label>
+            <ion-datetime displayFormat="DD/MM/YYYY " pickerFormat="MMM D:HH:mm" [(ngModel)]="event.startTime"
+                          display-timezone="utc" disabled></ion-datetime>
+          </ion-item>
+
+        </ion-card-content>
+      </ion-card>
+      <ion-button *ngIf="showAddEvent" icon-left size="medium" expand="full" shape="round" color="light" (click)="addEvent()" tappable>
+        Ajouter
+      </ion-button>
+      <ion-fab vertical="bottom" horizontal="end" slot="fixed" >
+        <ion-fab-button (click)="showHideForm()" >
+          <ion-icon class="close" *ngIf="showAddEvent" name="close" ></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+
+    </div> -->
 
   <div>
     <ion-button icon-left size="medium" *ngIf="selectedDate?.events.length==0" expand="full" shape="round" color="light" (click)="openModal()" tappable>
-      hhhhhhAjouter
-    </ion-button>
-    <ion-button icon-left size="medium" *ngIf="selectedDate?.events.length==0" expand="full" shape="round" color="light" (click)="showHideForm()" tappable>
       Ajouter
     </ion-button>
+ <!--   <ion-button icon-left size="medium" *ngIf="selectedDate?.events.length==0" expand="full" shape="round" color="light" (click)="showHideForm()" tappable>
+      Ajouter
+    </ion-button>-->
     <!--(click)="showHideForm()"-->
 
   </div>
