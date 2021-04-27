@@ -24,13 +24,21 @@ import { environment } from '../environments/environment';
 //services
 import { AuthService } from './services/auth.service';
 
+import {  LOCALE_ID } from '@angular/core';
+
+import { registerLocaleData } from '@angular/common';
+
+import localeFr from '@angular/common/locales/fr';
+
+registerLocaleData(localeFr);
+
 
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
-    BrowserModule, 
+    BrowserModule,
     IonicModule.forRoot(),
     FormsModule,
     AppRoutingModule,
@@ -43,6 +51,7 @@ import { AuthService } from './services/auth.service';
     AuthService,
     StatusBar,
     SplashScreen,
+    {provide: LOCALE_ID, useValue: "fr-CA" },
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
