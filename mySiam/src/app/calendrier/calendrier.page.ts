@@ -37,7 +37,7 @@ event = {
   numberNonJeune: number;
   numberRecupere: number;
   numberNonJeuneNourrir: number;
-  todayDate : Date = new Date();
+
   eventSource = [];
   viewTitle;
 
@@ -54,11 +54,8 @@ event = {
 
   constructor(private alertCtrl: AlertController, @Inject(LOCALE_ID) private locale: string,
   private toastr: ToastController,
-  public afDB: AngularFireDatabase,
-  private afAuth: AngularFireAuth,
-  private auth: AuthService,
-  private loadingCtrl: LoadingController
-  ,   private router: Router ,public modalController: ModalController
+  public afDB: AngularFireDatabase,private afAuth: AngularFireAuth,private auth: AuthService,
+  private loadingCtrl: LoadingController,private router: Router ,public modalController: ModalController
   ) {
   }
   ngOnInit() {
@@ -67,19 +64,18 @@ event = {
   }
   ionViewWillEnter(){
     console.log("lool");
-
+    
     this.loadEvent();
   }
 
   async openModal() {
-    console.log("loooooooool" + Date.now());
-
+    
       const modal = await this.modalController.create({
         component: MyModalPage,
         cssClass: 'my-custom-modal-css',
         componentProps: {
           "paramID": this.useriud,
-          "paramTitle": Date.now()
+          "paramTitle": this.event.startTime
         }
       });
 
@@ -122,7 +118,6 @@ event = {
         endTime: this.event.endTime,
         allDay: this.event.allDay,
         desc: this.event.desc,
-
       });
       this.showHideForm();
       this.resetEvent();
@@ -139,20 +134,13 @@ event = {
       duration: 2000
     });
     loading.present();
-    // this.numberNonJeune=0;
-    // this.numberRecupere=0;
-    // this.numberNonJeuneNourrir=0;
     this.afAuth.authState.subscribe(data => {
 this.useriud=data.uid;
 console.log('Events/'+ this.useriud);
     this.afDB.list('Events/'+ data.uid).snapshotChanges(['child_added']).subscribe(actions => {
       this.eventSource = [];
       actions.forEach(action => {
-        // console.log('action:' + action.payload.exportVal().title);
-        // console.log('idd1: '+ action.key);
-        // console.log('idd2: '+ action.payload.exportVal().key);
-        // console.log('direct: '+  action.payload.exportVal().startTime);
-        // console.log('dat new: '+  new Date(action.payload.exportVal().startTime));
+   
         if(action.payload.exportVal().title == 'Jour non jeûné'){
 
          if(action.payload.exportVal().desc == 'Maladie (courte durée)'){
@@ -254,6 +242,8 @@ async onEventSelected(event) {
 onTimeSelected(ev) {
   let selected = new Date(ev.selectedTime);
   this.event.startTime = selected.toISOString();
+  console.log("alooors" + this.event.startTime);
+
   selected.setHours(selected.getHours() + 1);
   this.event.endTime = (selected.toISOString());
 }

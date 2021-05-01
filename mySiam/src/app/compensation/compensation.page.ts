@@ -24,6 +24,9 @@ export class CompensationPage implements OnInit {
   eventSourceJ = [];
   eventSourceJV = [];
   eventSourceV = [];
+  nombreJoursJ = 0;
+  nombreJoursJV = 0;
+  nombreJoursV = 0;
   // eventSourceJ = [];
   yesEvent: boolean;
   todayDate : Date = new Date();
@@ -71,6 +74,9 @@ export class CompensationPage implements OnInit {
         this.numberNonJeune=0;
         this.numberRecupere=0;
         this.numberNonJeuneNourrir=0;
+        this.nombreJoursJ = 0;
+        this.nombreJoursJV = 0;
+        this.nombreJoursV = 0;
         actions.forEach(action => {
           const date = new Date(action.payload.exportVal().endTime);
 const day = date.getDay();
@@ -88,6 +94,7 @@ if( day == day1 && month == month1 && !this.yesEvent ){
           if (action.payload.exportVal().title == 'Jour non jeûné') {
             if (action.payload.exportVal().desc == 'Maladie (courte durée)') {
               this.numberNonJeuneNourrir++;
+        this.nombreJoursV ++;
               this.eventSourceV.push({
                 id: action.key,
                 title: action.payload.exportVal().title,
@@ -100,6 +107,7 @@ if( day == day1 && month == month1 && !this.yesEvent ){
             }
             else if (action.payload.exportVal().desc == 'Maladie (longue durée donc irrattrapable)') {
               this.numberNonJeuneNourrir++;
+        this.nombreJoursV ++;
               this.eventSourceV.push({
                 id: action.key,
                 title: action.payload.exportVal().title,
@@ -112,6 +120,7 @@ if( day == day1 && month == month1 && !this.yesEvent ){
             }
             else if (action.payload.exportVal().desc == 'Grossesse') {
               this.numberNonJeune++;
+              this.nombreJoursJ ++;
               this.eventSourceJ.push({
                 id: action.key,
                 title: action.payload.exportVal().title,
@@ -125,6 +134,7 @@ if( day == day1 && month == month1 && !this.yesEvent ){
             else if (action.payload.exportVal().desc == 'Allaitement') {
               this.numberNonJeuneNourrir++;
               this.numberNonJeune++;
+        this.nombreJoursJV ++;
               this.eventSourceJV.push({
                 id: action.key,
                 title: action.payload.exportVal().title,
@@ -137,6 +147,7 @@ if( day == day1 && month == month1 && !this.yesEvent ){
             }
             else if (action.payload.exportVal().desc == 'période de menstrue') {
               this.numberNonJeune++;
+              this.nombreJoursJ ++;
               this.eventSourceJ.push({
                 id: action.key,
                 title: action.payload.exportVal().title,
@@ -149,6 +160,7 @@ if( day == day1 && month == month1 && !this.yesEvent ){
             }
             else if (action.payload.exportVal().desc == 'Voyage') {
               this.numberNonJeune++;
+              this.nombreJoursJ ++;
               this.eventSourceJ.push({
                 id: action.key,
                 title: action.payload.exportVal().title,
