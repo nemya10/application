@@ -63,15 +63,67 @@ event-detail {
   width: 280px;
 }
 
-.logomy-siam-1-dXBp89 {
+.calandrier .logomy-siam-1-C61RwL1 {
   background-color: transparent;
   flex-shrink: 1;
   height: 107px;
+  margin-top: 25px;
   position: relative;
   width: 133px;
-  left: 175px;
 }
 
 .table-bordered[_ngcontent-fip-c132]{
       border: none;
   }
+
+.calandrier {
+  align-items: center;
+  background-size: 100% 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+  overflow-x: hidden;
+  position: relative;
+}
+.mdicalendar-month-dXBp89 {
+  align-items: flex-start;
+  align-self: flex-end;
+  background-color: transparent;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 1;
+  height: 36px;
+  justify-content: flex-start;
+  margin-left: 100px;
+  overflow: hidden;
+  padding: 1px 4px;
+  position: relative;
+  width: 36px;
+}
+
+.vector-U1fE8l {
+  background-color: transparent;
+  flex-shrink: 1;
+  height: 31px;
+  position: relative;
+  width: 28px;
+}
+
+.avril-2021-C61RwL {
+  align-self: flex-end;
+  color: #FFFFFF;
+  flex-shrink: 1;
+  height: auto;
+  letter-spacing: 0.00px;
+  line-height: normal;
+  margin-top: 2px;
+  margin-left: 29px;
+  min-height: 21px;
+  min-width: 85px;
+  position: relative;
+  text-align: center;
+  width: auto;
+}

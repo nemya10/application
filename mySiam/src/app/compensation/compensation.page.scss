@@ -5,9 +5,19 @@
     }
 }
 
-
-
 .homepage {
+  align-items: center;
+  background-size: 100% 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.homepagedd {
   align-items: center;
   background-color: var(--white);
   background-size: 100% 100%;
@@ -28,7 +38,6 @@
   height: auto;
   letter-spacing: 0.00px;
   line-height: normal;
-  margin-right: 20px;
   margin-top: 8px;
   min-height: 21px;
   min-width: 85px;
@@ -77,7 +86,7 @@
   line-height: normal;
   position: absolute;
   text-align: center;
-  top: 25px;
+  top: 20%;
   width: auto;
 }
 
@@ -296,7 +305,7 @@ color: #FFFFFF;
   height: 104px;
   justify-content: flex-start;
   margin-left: 7.0px;
-  margin-top: 27px;
+  margin-top: 10px;
   min-width: 332px;
   position: relative;
   width: auto;
@@ -307,7 +316,6 @@ color: #FFFFFF;
   height: 40px;
   left: 0px;
   position: absolute;
-  top: 15px;
   width: 328px;
 }
 .homepage .fond-Xw4sWa {
@@ -326,7 +334,7 @@ color: #FFFFFF;
   height: 60px;
   left: 0px;
   position: absolute;
-  top: 0px;
+  top: -40%;
   width: 155px;
 }
 
@@ -336,7 +344,7 @@ color: #FFFFFF;
   height: 60px;
   left: 170px;
   position: absolute;
-  top: 0px;
+  top: -40%;
   width: 155px;
 }
 
@@ -379,7 +387,7 @@ color: #FFFFFF;
   line-height: normal;
   position: absolute;
   text-align: center;
-  top: 20px;
+  top: 10%;
   width: auto;
 }
 
@@ -391,7 +399,7 @@ color: #FFFFFF;
   line-height: normal;
   position: absolute;
   text-align: center;
-  top: 20px;
+  top: 10%;
   width: auto;
 }
 .homepage .jeudi-pNSWN4 {
@@ -706,12 +714,11 @@ color: #FFFFFF;
   background-color: transparent;
   height: auto;
   left: 53px;
-  letter-spacing: 0.00px;
   line-height: normal;
   position: absolute;
   text-align: left;
   top: 16px;
-  width: 56px;
+  width: 100px;
 }
 .homepage .nombre-de-jours-rattrapage-bloVV8 {
   background-color: transparent;
