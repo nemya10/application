@@ -12,8 +12,9 @@ export class ProfilePage implements OnInit {
 name: string = ""
 email: string = ""
 val = "";
+todayDate : Date = new Date();
 
-  constructor(private afAuth: AngularFireAuth, private auth: AuthService,  private router: Router) { 
+  constructor(private afAuth: AngularFireAuth, private auth: AuthService,  private router: Router) {
     this.val = "profile";
     this.afAuth.authState.subscribe(data => {
       console.log(data.uid);
@@ -23,7 +24,7 @@ val = "";
     )
 
 console.log(this.auth.getUser());
-    
+
     // this.name=this.auth.getUser().name;
   }
 
@@ -34,10 +35,10 @@ console.log(this.auth.getUser());
     this.router.navigate(['../profile']);
   }//
   toCalendrier() {
-  
+
     this.router.navigate(['/home/calendrier']);
     }
- 
+
   toHome() {
     this.val ='compensation'
     this.router.navigate(['../compensation']);

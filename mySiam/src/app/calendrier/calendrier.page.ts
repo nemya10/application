@@ -37,7 +37,7 @@ event = {
   numberNonJeune: number;
   numberRecupere: number;
   numberNonJeuneNourrir: number;
-
+  todayDate : Date = new Date();
   eventSource = [];
   viewTitle;
 
@@ -67,13 +67,13 @@ event = {
   }
   ionViewWillEnter(){
     console.log("lool");
-    
+
     this.loadEvent();
   }
 
   async openModal() {
     console.log("loooooooool" + Date.now());
-    
+
       const modal = await this.modalController.create({
         component: MyModalPage,
         cssClass: 'my-custom-modal-css',
