@@ -26,6 +26,7 @@ export class CompensationPage implements OnInit {
   eventSourceV = [];
   // eventSourceJ = [];
   yesEvent: boolean;
+  todayDate : Date = new Date();
 
   showEditEvent: boolean;
   val = "";

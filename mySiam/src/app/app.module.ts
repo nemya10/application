@@ -38,7 +38,7 @@ registerLocaleData(localeFr);
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
-    BrowserModule, 
+    BrowserModule,
     IonicModule.forRoot(),
     FormsModule,
     AppRoutingModule,
