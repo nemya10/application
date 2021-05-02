@@ -87,22 +87,6 @@ event-detail {
   overflow-x: hidden;
   position: relative;
 }
-.mdicalendar-month-dXBp89 {
-  align-items: flex-start;
-  align-self: flex-end;
-  background-color: transparent;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  flex-shrink: 1;
-  height: 36px;
-  justify-content: flex-start;
-  margin-left: 100px;
-  overflow: hidden;
-  padding: 1px 4px;
-  position: relative;
-  width: 36px;
-}
 
 .vector-U1fE8l {
   background-color: transparent;
@@ -112,18 +96,16 @@ event-detail {
   width: 28px;
 }
 
+.mdicalendar-month-dXBp89 {
+  overflow: hidden;
+  padding: 5px 4px;
+  position: relative;
+  width: 36px;
+  left: 52%;
+}
 .avril-2021-C61RwL {
-  align-self: flex-end;
-  color: #FFFFFF;
-  flex-shrink: 1;
-  height: auto;
-  letter-spacing: 0.00px;
-  line-height: normal;
-  margin-top: 2px;
-  margin-left: 29px;
-  min-height: 21px;
-  min-width: 85px;
   position: relative;
   text-align: center;
   width: auto;
+  left: 5%;
 }

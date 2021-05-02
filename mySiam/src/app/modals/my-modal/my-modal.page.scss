@@ -5,6 +5,12 @@
   display: block;
   opacity: 0;transform: translate(0, 25px);
 }
+
+@keyframes animate-enter2-frames {
+from{opacity: 0;transform: translate(0, 25px);}
+to{opacity: 1;transform: translate(0,0);}
+}
+
 :host {
     ion-content {
         --overflow: hidden;
@@ -44,7 +50,6 @@
   border-radius: 25px;
   height: 100px;
   position: absolute;
-  top: -10px;
   width: 147px;
 }
 
@@ -53,7 +58,6 @@
   border-radius: 25px;
   height: 100px;
   position: absolute;
-  top: -10px;
   width: 147px;
 }
 
@@ -62,7 +66,6 @@
   border-radius: 25px;
   height: 100px;
   position: absolute;
-  top: -10px;
   width: 147px;
 }
 
@@ -71,7 +74,6 @@
   border-radius: 25px;
   height: 100px;
   position: absolute;
-  top: -10px;
   width: 147px;
 }
 
@@ -83,21 +85,6 @@
   position: absolute;
   top: -1px;
   width: 377px;
-}
-
-.choix-motif-unselected {
-  align-items: center;
-  background-color: var(--white);
-  background-size: 100% 100%;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  height: 812px;
-  justify-content: flex-start;
-  overflow: hidden;
-  overflow-x: hidden;
-  position: relative;
-  width: 375px;
 }
 .allaitement-3ZIm0l {
   color: #FFFFFF;
@@ -166,33 +153,32 @@
 .ce-jour-l-je-nai-pas-jen-ZxI5OY {
   background-color: transparent;
   height: 23px;
-  left: 70px;
   letter-spacing: 0.00px;
   line-height: normal;
-  position: absolute;
+  position: relative;
   text-align: center;
   top: 32px;
   width: auto;
+  margin: auto;
 }
 .choix-motif-non-jene-4eduM0 {
   background-size: 100% 100%;
   background-color: transparent;
   display: block;
-  height: 411px;
   position: absolute;
-  top: 0px;
-  left : 15%;
   width: 100%;
+  height: 100%;
   opacity: 0;transform: translate(0, 25px);
+  flex-direction: column;
 }
 .claritytimes-circle-line-ZxI5OY {
   background-color: transparent;
   height: 36px;
-  left: 326px;
   overflow: hidden;
-  position: absolute;
-  top: 7px;
+  position: relative;
+  top: -10px;
   width: 36px;
+  left : 88%;
 }
 .combined-shape-ijPRDX {
   align-self: center;
@@ -442,7 +428,7 @@
   height: 5px;
   left: 35%;
   position: absolute;
-  top: 300px;
+  top: 330px;
   width: 121px;
 }
 .jeudi-pNSWN4 {
@@ -1069,7 +1055,4 @@
   position: relative;
   width: 29px;
 }
-@keyframes animate-enter2-frames {
-from{opacity: 0;transform: translate(0, 25px);}
-to{opacity: 1;transform: translate(0,0);}
-}
+

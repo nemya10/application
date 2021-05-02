@@ -14,6 +14,7 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./calendrier.page.scss'],
 })
 export class CalendrierPage implements OnInit {
+todayDate : Date = new Date();
 dataReturned: any;
 event = {
   id:'',
@@ -64,12 +65,12 @@ event = {
   }
   ionViewWillEnter(){
     console.log("lool");
-    
+
     this.loadEvent();
   }
 
   async openModal() {
-    
+
       const modal = await this.modalController.create({
         component: MyModalPage,
         cssClass: 'my-custom-modal-css',
@@ -140,7 +141,7 @@ console.log('Events/'+ this.useriud);
     this.afDB.list('Events/'+ data.uid).snapshotChanges(['child_added']).subscribe(actions => {
       this.eventSource = [];
       actions.forEach(action => {
-   
+
         if(action.payload.exportVal().title == 'Jour non jeûné'){
 
          if(action.payload.exportVal().desc == 'Maladie (courte durée)'){

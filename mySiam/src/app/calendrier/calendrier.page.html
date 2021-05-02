@@ -240,7 +240,6 @@
 
 
         <ion-row>
-          <ion-col size="1" ></ion-col>
           <ion-col size="1">
             <ion-button fill="clear" (click)="back()">
               <ion-icon name="arrow-back" slot="icon-only" style="color: aliceblue;"></ion-icon>
@@ -248,10 +247,8 @@
           </ion-col>
 
 
-          <ion-col size="7">
-            <div class="flex-row-C61RwL">
-              <div class="mdicalendar-month-dXBp89"><img class="vector-U1fE8l" src="assets/petitCal.svg"/></div>
-            </div>
+          <ion-col size="9">
+            <div class="mdicalendar-month-dXBp89"><img src="assets/petitCal.svg"/></div>
             <div class="avril-2021-C61RwL roboto-bold-white-18px">{{todayDate | date:'MMMM y'}}</div>
           </ion-col>
 
@@ -297,11 +294,11 @@
     </ion-fab-button>
   </ion-fab>
 
-  <ng-template #template1 let-showEventDetail="showEventDetail" let-selectedDate="selectedDate"
-    let-noEventsLabel="noEventsLabel">
-    <div  *ngIf="showEventDetail">
+  <ng-template #template1 let-showEventDetail="showEventDetail" let-selectedDate="selectedDate" let-noEventsLabel="noEventsLabel">
 
-    <ion-card *ngFor="let event of selectedDate?.events" (click)="onEventSelected(event)">
+    <!--<div  *ngIf="showEventDetail">
+
+        <ion-card *ngFor="let event of selectedDate?.events" (click)="onEventSelected(event)">
           <ion-card-header>
             <ion-card-title>{{event.title}}</ion-card-title>
           </ion-card-header>
@@ -313,7 +310,7 @@
           </ion-card-header>
         </ion-card>
 
-    </div>
+    </div> -->
 
 
     <!--
@@ -359,16 +356,16 @@
 
     </div> -->
 
-  <div>
-    <ion-button icon-left size="medium" *ngIf="selectedDate?.events.length==0" expand="full" shape="round" color="light" (click)="openModal()" tappable>
-      Ajouter
-    </ion-button>
- <!--   <ion-button icon-left size="medium" *ngIf="selectedDate?.events.length==0" expand="full" shape="round" color="light" (click)="showHideForm()" tappable>
-      Ajouter
-    </ion-button>-->
-    <!--(click)="showHideForm()"-->
+        <div>
+          <ion-button icon-left size="medium" *ngIf="selectedDate?.events.length==0" expand="full" shape="round" color="light" (click)="openModal()" tappable>
+            Ajouter
+          </ion-button>
+       <!--   <ion-button icon-left size="medium" *ngIf="selectedDate?.events.length==0" expand="full" shape="round" color="light" (click)="showHideForm()" tappable>
+            Ajouter
+          </ion-button>-->
+          <!--(click)="showHideForm()"-->
 
-  </div>
+        </div>
   </ng-template>
 
 
