@@ -63,39 +63,44 @@ export class CompensationPage implements OnInit {
    }
 
   async loadEvent() {
-    this.afAuth.authState.subscribe(data => {
-      this.useriud = data.uid;
-      console.log('Events/' + this.useriud);
+        this.afAuth.authState.subscribe(data => {
+        this.useriud = data.uid;
+        console.log('Events/' + this.useriud);
         this.afDB.list('Events/' + data.uid).snapshotChanges(['child_added']).subscribe(actions => {
-          this.eventSourceR = [];
-          this.eventSourceJ = [];
-          this.eventSourceJV = [];
-          this.eventSourceV = [];
+        this.eventSourceR = [];
+        this.eventSourceJ = [];
+        this.eventSourceJV = [];
+        this.eventSourceV = [];
         this.numberNonJeune=0;
         this.numberRecupere=0;
         this.numberNonJeuneNourrir=0;
         this.nombreJoursJ = 0;
         this.nombreJoursJV = 0;
         this.nombreJoursV = 0;
+
+
         actions.forEach(action => {
-          const date = new Date(action.payload.exportVal().endTime);
-const day = date.getDay();
-const month = date.getMonth;
-const date1 = new Date().toISOString();
-const day1 = date.getDay();
-const month1 = date.getMonth;
 
+        const date = new Date(action.payload.exportVal().endTime);
+        const day = date.getDay();
+        const month = date.getMonth;
+        const date1 = new Date().toISOString();
+        const day1 = date.getDay();
+        const month1 = date.getMonth;
+        const datee = new Date().toDateString()
 
-if( day == day1 && month == month1 && !this.yesEvent ){
-  console.log("true laaa");
+        console.log("day : " + date.toDateString());
+        console.log("month : " + datee);
 
-  this.yesEvent = true ;
-}
-          if (action.payload.exportVal().title == 'Jour non jeûné') {
+        if( datee == date.toDateString() && !this.yesEvent ){
+            console.log("true laaa" + day);
+            this.yesEvent = true ;
+         }
+         if (action.payload.exportVal().title == 'Jour non jeûné') {
             if (action.payload.exportVal().desc == 'Maladie (courte durée)') {
-              this.numberNonJeuneNourrir++;
-        this.nombreJoursV ++;
-              this.eventSourceV.push({
+                this.numberNonJeuneNourrir++;
+                this.nombreJoursV ++;
+                this.eventSourceV.push({
                 id: action.key,
                 title: action.payload.exportVal().title,
                 startTime: action.payload.exportVal().startTime,
@@ -107,7 +112,7 @@ if( day == day1 && month == month1 && !this.yesEvent ){
             }
             else if (action.payload.exportVal().desc == 'Maladie (longue durée donc irrattrapable)') {
               this.numberNonJeuneNourrir++;
-        this.nombreJoursV ++;
+              this.nombreJoursV ++;
               this.eventSourceV.push({
                 id: action.key,
                 title: action.payload.exportVal().title,
@@ -134,7 +139,7 @@ if( day == day1 && month == month1 && !this.yesEvent ){
             else if (action.payload.exportVal().desc == 'Allaitement') {
               this.numberNonJeuneNourrir++;
               this.numberNonJeune++;
-        this.nombreJoursJV ++;
+              this.nombreJoursJV ++;
               this.eventSourceJV.push({
                 id: action.key,
                 title: action.payload.exportVal().title,
@@ -193,7 +198,6 @@ if( day == day1 && month == month1 && !this.yesEvent ){
       });
     })
     console.log("alafin laaa" + this.yesEvent);
-
  }
 
 async openModal() {
@@ -202,8 +206,9 @@ async openModal() {
     console.log("aloooooggggoo" + this.yesEvent);
 
     const alert = await this.alertCtrl.create({
-      header: 'impossible',
-      subHeader: "Jour déja non jeuné ou récupéré ",
+      header: "Aujourd'hui",
+      subHeader: "Jour déja non jeuné ou récupéré",
+      message : "Pour saisir une autre journée merci de cliquer sur le Calandrier en haut de cette page",
       buttons: ['OK']
     });
     alert.present();

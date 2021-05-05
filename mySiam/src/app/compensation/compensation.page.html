@@ -300,8 +300,8 @@
 
           <div class="bouton-rattrapage-jene-C61RwL">
             <div class="fond-Xw4sWa"></div>
-            <div  (click)="editEventRecupJ()" class="jai-rattrap-un-jour-de-jene-Xw4sWa valign-text-middle roboto-normal-bittersweet-18px">
-              J’ai rattrapé un jour de jeûne ({{nombreJoursJ}})
+            <div class="jai-rattrap-un-jour-de-jene-Xw4sWa valign-text-middle roboto-normal-bittersweet-18px">
+              <ion-buton (click)="editEventRecupJ()" [disabled]="disabled">J’ai rattrapé un jour de jeûne ({{nombreJoursJ}})</ion-buton>
             </div>
           </div>
           <div class="bouton-verser-C61RwL">
@@ -314,9 +314,9 @@
               J’ai versé une somme d'argent et rattrapé ({{nombreJoursJV}})
             </div>
           </div>
-          <div class="bouton-non-jene-C61RwL">
-            <div class="fond-VSaOYX" (click)="openModal()"></div>
-            <div class="ce-jour-l-je-nai-pas-jen-VSaOYX valign-text-middle roboto-normal-bittersweet-18px" (click)="openModal()">
+          <div class="bouton-non-jene-C61RwL" (click)="openModal()">
+            <div class="fond-VSaOYX"></div>
+            <div class="ce-jour-l-je-nai-pas-jen-VSaOYX valign-text-middle roboto-normal-bittersweet-18px">
               Ce jour-là je n’ai pas jeûné
             </div>
           </div>
